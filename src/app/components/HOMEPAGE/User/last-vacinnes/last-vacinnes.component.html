@@ -3,26 +3,17 @@
         
         <thead >
           <tr >
-            <th class="bg-primary  text-white" scope="col">Last administrated vaccines</th>
+            <th class="th" scope="col">Last administrated vaccines</th>
           
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            
-            <td>Mark</td>
-           
+        <tbody >
+          <tr *ngFor="let pacient of p">
+            <td *ngFor="let vacuna of pacient.vacunas">{{pacient.nombre}}: {{vacuna.nombre}}</td>
           </tr>
-          <tr>
-            
-            <td>Jacob</td>
           
-          </tr>
-          <tr>
-           
-            <td>Larry</td>
-           
-          </tr>
+          
+         
         </tbody>
       </table>
 </div>
