@@ -13,16 +13,20 @@ import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/
 @NgModule({
   declarations: [
     AppComponent,
+
   
     LogInComponent,
     LastVacinnesComponent,
     NextVacinnesComponent
+
+    LogInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()

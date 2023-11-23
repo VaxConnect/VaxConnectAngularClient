@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
+  pageLogin: Boolean = true;
 
-}
+  changePage() {
+    if (this.pageLogin) {
+      this.pageLogin = false;
+    } else {
+      this.pageLogin = true;
+    }
+  }
+} 
