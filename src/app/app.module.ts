@@ -14,6 +14,7 @@ import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.com
 import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/last-vacinnes.component';
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
+import { VaccineChartComponent } from './components/COMMONS/vaccine-chart/vaccine-chart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.compon
     LastVacinnesComponent,
     NextVacinnesComponent,
     LogInComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    VaccineChartComponent
   ],
   imports: [
     BrowserModule,
