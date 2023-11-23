@@ -1,0 +1,20 @@
+<div class="">
+    <table class="table table-bordered " style="width: 400px;">
+        
+        <thead >
+          <tr >
+            <th class="th" scope="col">Next vaccines</th>
+          
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let pacient of p">
+            <td *ngFor="let vacuna of pacient.vacunas">{{pacient.nombre}} {{pacient.apellido}}: {{vacuna.nombre}}</td>
+            
+          </tr>
+          
+          
+         
+        </tbody>
+      </table>
+</div>
