@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+
+@if (show) {
+<app-navbar></app-navbar>
+}
+<router-outlet (activate)="toggleNavBar($event)"></router-outlet>
+@if (show) {
+<app-footer></app-footer>
+}

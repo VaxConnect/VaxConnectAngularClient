@@ -8,6 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogInComponent } from './ui/log-in/log-in.component';
 import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
 import { NavComponent } from './components/CALENDARPAGE/user/nav/nav.component';
+import { LogInComponent } from './ui/log-in/log-in.component';
+import { NavbarComponent } from './components/COMMONS/navbar/navbar.component';
+import { FooterComponent } from './components/COMMONS/footer/footer.component';
+import { HomePageComponent } from './ui/USER/home-page/home-page.component';
+import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
+import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/last-vacinnes.component';
+import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +22,21 @@ import { NavComponent } from './components/CALENDARPAGE/user/nav/nav.component';
     LogInComponent,
     CalendarPageComponent,
     NavComponent,
+    NavbarComponent,
+    FooterComponent,
+    HomePageComponent,
+    CalendarPageComponent,
+    LogInComponent,
+    LastVacinnesComponent,
+    NextVacinnesComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
