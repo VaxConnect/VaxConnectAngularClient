@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogInComponent } from './ui/log-in/log-in.component';
 import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
 import { NavComponent } from './components/CALENDARPAGE/user/nav/nav.component';
-import { NavItemComponent } from './components/CALENDARPAGE/user/nav-item/nav-item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { NavItemComponent } from './components/CALENDARPAGE/user/nav-item/nav-it
     LogInComponent,
     CalendarPageComponent,
     NavComponent,
-    NavItemComponent
   ],
   imports: [
     BrowserModule,

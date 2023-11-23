@@ -1,8 +1,11 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     @for (p of pacients; track $index) {
-    <app-nav-item [patient]="p"></app-nav-item>
+    <li [ngbNavItem]="p">
+        <button ngbNavLink>{{p.nombre}}</button>
+        <ng-template ngbNavContent>
+            <p>{{p.notes}}</p>
+        </ng-template>
+    </li>
     }
 </ul>
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
-
-<pre>Active: {{ active }}</pre>

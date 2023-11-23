@@ -6,6 +6,7 @@ type Pacient = {
   notes: string
 }
 
+
 const Pacients: Pacient[] = [
   {
     id: '1',
