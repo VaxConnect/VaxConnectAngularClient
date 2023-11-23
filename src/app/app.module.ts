@@ -13,11 +13,16 @@ import { HomePageComponent } from './ui/USER/home-page/home-page.component';
 import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
 import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/last-vacinnes.component';
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LogInComponent,
+    LastVacinnesComponent,
+    NextVacinnesComponent,
+    LogInComponent,
     CalendarPageComponent,
     NavComponent,
     NavbarComponent,
@@ -34,7 +39,8 @@ import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.compon
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()
