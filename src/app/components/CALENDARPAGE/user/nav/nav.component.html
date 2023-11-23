@@ -1,0 +1,8 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    @for (p of pacients; track $index) {
+    <app-nav-item [patient]="p"></app-nav-item>
+    }
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<pre>Active: {{ active }}</pre>

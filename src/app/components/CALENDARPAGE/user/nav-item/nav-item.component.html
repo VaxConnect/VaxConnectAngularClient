@@ -1,0 +1,6 @@
+<li [ngbNavItem]="patient">
+    <button ngbNavLink>{{patient.nombre}}</button>
+    <ng-template ngbNavContent>
+        <p>{{patient.notes}}</p>
+    </ng-template>
+</li>
