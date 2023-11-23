@@ -9,16 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogInComponent } from './ui/log-in/log-in.component';
 import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/last-vacinnes.component';
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-
-  
     LogInComponent,
     LastVacinnesComponent,
-    NextVacinnesComponent
-
+    NextVacinnesComponent,
     LogInComponent
   ],
   imports: [
@@ -26,7 +24,8 @@ import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration()
