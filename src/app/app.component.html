@@ -1,8 +1,9 @@
 
-<div >
-    <app-last-vacinnes class="p-2 g-col-6 me-5"></app-last-vacinnes>
-    <app-next-vacinnes class="p-2 g-col-6 ms-5"></app-next-vacinnes>
-</div>
-
-<app-log-in></app-log-in>
+@if (show) {
+<app-navbar></app-navbar>
+}
+<router-outlet (activate)="toggleNavBar($event)"></router-outlet>
+@if (show) {
+<app-footer></app-footer>
+}
 
