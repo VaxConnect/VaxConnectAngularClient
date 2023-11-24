@@ -1,0 +1,14 @@
+<button class="btn btn-lg btn-outline-primary" (click)="openModal(vaccineDetails)">Launch demo 1</button>
+
+<ng-template #vaccineDetails let-offcanvas>
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title">{{vaccine.nombre}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body">
+        <h4>A los 5</h4>
+        <hr>
+        <p>{{vaccine.description}}</p>
+        <hr>
+    </div>
+</ng-template>

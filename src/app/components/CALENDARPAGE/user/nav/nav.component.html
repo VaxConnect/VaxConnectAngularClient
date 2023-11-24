@@ -1,7 +1,7 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     @for (p of pacients; track $index) {
     <li [ngbNavItem]="p">
-        <button ngbNavLink>{{p.nombre}}</button>
+        <button ngbNavLink class="navSection">{{p.nombre}}</button>
         <ng-template ngbNavContent>
             <p>{{p.notes}}</p>
         </ng-template>
