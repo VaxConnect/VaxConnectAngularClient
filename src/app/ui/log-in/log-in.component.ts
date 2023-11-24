@@ -10,7 +10,6 @@ import { LoginResponse } from '../../modules/login.module';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-  response: LoginResponse | undefined;
 
   constructor(private loginService: LoginService) { };
 
@@ -19,6 +18,16 @@ export class LogInComponent {
   profileLogin = new FormGroup({
     mail: new FormControl(''),
     password: new FormControl('')
+  })
+
+  profileRegister = new FormGroup({
+    mail: new FormControl(''),
+    name: new FormControl(''),
+    lastName: new FormControl(''),
+    password: new FormControl(''),
+    repeatPassword: new FormControl(''),
+    phone: new FormControl(''),
+    bDay: new FormControl('')
   })
 
   changePage() {
@@ -31,12 +40,12 @@ export class LogInComponent {
 
   login() {
     this.loginService.LoginResponse(this.profileLogin.value.mail!, this.profileLogin.value.password!).subscribe(p => {
-      console.log(p.avatar)
-      console.log(p.createdAt)
-      console.log(p.fullName)
-      console.log(p.id)
-      console.log(p.mail)
-      console.log(p.token)
+      localStorage.setItem('TOKEN', p.token)
+      localStorage.setItem('USER_ID', p.id)
     })
+  }
+
+  register() {
+    this.loginService.RegisterResponse
   }
 } 

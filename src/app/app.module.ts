@@ -15,6 +15,7 @@ import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
+import { VaccinesPageComponent } from './ui/vaccines-page/vaccines-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.compon
     LastVacinnesComponent,
     NextVacinnesComponent,
     LogInComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    VaccinesPageComponent,
+    VaccinesPageComponent
   ],
   imports: [
     BrowserModule,

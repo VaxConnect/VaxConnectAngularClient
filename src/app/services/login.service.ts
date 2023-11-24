@@ -12,9 +12,18 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   LoginResponse(mail: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.HeadUrl}/auth/login`,
+    return this.http.post<LoginResponse>(`${environment.HeadUrl}auth/login`,
       {
         "mail": `${mail}`,
+        "password": `${password}`
+      }
+    );
+  }
+
+  RegisterResponse(mail: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${environment.HeadUrl}auth/login`,
+      {
+        "email": `${mail}`,
         "password": `${password}`
       }
     );
