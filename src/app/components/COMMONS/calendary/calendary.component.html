@@ -1,0 +1,42 @@
+<h1 class="text-center">calendario</h1>
+<div class="div">
+    <div class="d-flex ms-5 w-100" >
+        <div class="arriba">
+            <div *ngFor="let pa of p" class="  text-center"  style="width: 64.38px;  margin-left: 17.81px; margin-right: 17.81px;" >{{pa.id}}</div>
+        </div>
+    </div>
+
+<div class="d-flex ">
+    <div class="columna">
+        <div *ngFor="let pa of p" class="ms-4 border mt-2 text-center" style="width: 200px; height: 50.46px;">
+        {{pa.vacunas[0].id}}
+        </div>
+   </div>
+   <div>
+    <div class="d-flex mt-2 " style="height: 50.46px; width: 100%;">
+        <div *ngFor="let pa of p" class=" border text-center position-relative " style="width: 64.38px; height: 50.46px; margin-left: 17.81px; margin-right: 17.81px;">
+            {{pa.vacunas[0].id}}
+            </div>
+            
+        
+       </div>
+       <div class="d-flex mt-2 " style="height: 50.46px;">
+        <div *ngFor="let pe of p" class=" border text-center position-relative"  style="width: 64.38px; height: 50.46px; margin-left: 17.81px; margin-right: 17.81px;">
+            {{pe.vacunas[0].id}}
+            </div>
+            
+        
+       </div>
+   </div>
+   
+   
+   
+</div>
+  
+
+
+
+
+
+
+</div>
