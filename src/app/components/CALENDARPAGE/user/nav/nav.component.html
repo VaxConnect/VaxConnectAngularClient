@@ -1,9 +1,9 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-    @for (p of pacients; track $index) {
-    <li [ngbNavItem]="p">
-        <button ngbNavLink>{{p.nombre}}</button>
+    @for (d of dependentList; track $index) {
+    <li [ngbNavItem]="d">
+        <button ngbNavLink>{{d.name}} {{d.lastName}}</button>
         <ng-template ngbNavContent>
-            <p>{{p.notes}}</p>
+            <p>{{d.birthDate}}</p>
         </ng-template>
     </li>
     }

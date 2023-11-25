@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
 import { LogInComponent } from './ui/log-in/log-in.component';
 import { HomePageComponent } from './ui/USER/home-page/home-page.component';
 import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
