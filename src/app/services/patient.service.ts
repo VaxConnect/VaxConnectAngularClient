@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserBasicDataResponse } from '../models/user-dependents.interface';
+import { patientBasicDataResponse } from '../models/patient-data.interface';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
@@ -11,9 +11,9 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  GetUserDependents(): Observable<UserBasicDataResponse[]> {
+  GetUserDependents(): Observable<patientBasicDataResponse[]> {
     let token = localStorage.getItem('TOKEN');
-    return this.http.get<UserBasicDataResponse[]>(`${environment.HeadUrl}/patient/dependents`,
+    return this.http.get<patientBasicDataResponse[]>(`${environment.HeadUrl}/patient/dependents`,
       {
         headers: {
           accept: 'application/json',
@@ -22,9 +22,9 @@ export class PatientService {
       });
   }
 
-  GetUserLogged(): Observable<UserBasicDataResponse> {
+  GetUserLogged(): Observable<patientBasicDataResponse> {
     let token = localStorage.getItem('TOKEN');
-    return this.http.get<UserBasicDataResponse>(`${environment.HeadUrl}/patient/logged`,
+    return this.http.get<patientBasicDataResponse>(`${environment.HeadUrl}/patient/logged`,
       {
         headers: {
           accept: 'application/json',

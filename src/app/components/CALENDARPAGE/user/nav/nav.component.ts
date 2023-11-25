@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../../../services/patient.service';
-import { UserBasicDataResponse } from '../../../../models/user-dependents.interface';
+import { patientBasicDataResponse } from '../../../../models/patient-data.interface';
 
 
 @Component({
@@ -9,8 +9,8 @@ import { UserBasicDataResponse } from '../../../../models/user-dependents.interf
   styleUrl: './nav.component.css'
 })
 export class NavComponent implements OnInit {
-  dependentList: UserBasicDataResponse[] = [];
-  userLogged!: UserBasicDataResponse;
+  dependentList: patientBasicDataResponse[] = [];
+  userLogged!: patientBasicDataResponse;
   active = 1;
 
   constructor(private patientService: PatientService) { }
