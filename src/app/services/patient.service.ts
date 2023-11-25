@@ -12,20 +12,23 @@ export class PatientService {
   constructor(private http: HttpClient) { }
 
   GetUserDependents(): Observable<UserBasicDataResponse[]> {
+    let token = localStorage.getItem('TOKEN');
     return this.http.get<UserBasicDataResponse[]>(`${environment.HeadUrl}/patient/dependents`,
       {
         headers: {
           accept: 'application/json',
-          'Authorization': `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhODU4ODMzMy02NDg0LTQ1NWUtODdhMC01NTYxN2VhZjkwZGUiLCJpYXQiOjE3MDEwMTkwNDB9.uTTE-SkqjHRZdvtyqikdTCjhPHvrIEe8aB_i9wkFcVJdPXgdhApbsVYdbXtlB8oy7V6NLj6iZyLk45vkggfUew"}`
+          'Authorization': `Bearer ${token}`
         }
       });
   }
-  GetUser(): Observable<UserBasicDataResponse> {
+
+  GetUserLogged(): Observable<UserBasicDataResponse> {
+    let token = localStorage.getItem('TOKEN');
     return this.http.get<UserBasicDataResponse>(`${environment.HeadUrl}/patient/logged`,
       {
         headers: {
           accept: 'application/json',
-          'Authorization': `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhODU4ODMzMy02NDg0LTQ1NWUtODdhMC01NTYxN2VhZjkwZGUiLCJpYXQiOjE3MDEwMTkwNDB9.uTTE-SkqjHRZdvtyqikdTCjhPHvrIEe8aB_i9wkFcVJdPXgdhApbsVYdbXtlB8oy7V6NLj6iZyLk45vkggfUew"}`
+          'Authorization': `Bearer ${token}`
         }
       });
   }

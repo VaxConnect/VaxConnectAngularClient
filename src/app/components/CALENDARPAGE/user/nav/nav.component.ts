@@ -10,6 +10,7 @@ import { UserBasicDataResponse } from '../../../../models/user-dependents.interf
 })
 export class NavComponent implements OnInit {
   dependentList: UserBasicDataResponse[] = [];
+  userLogged!: UserBasicDataResponse;
   active = 1;
 
   constructor(private patientService: PatientService) { }
@@ -18,5 +19,8 @@ export class NavComponent implements OnInit {
     this.patientService.GetUserDependents().subscribe(resp => {
       this.dependentList = resp;
     });
+    this.patientService.GetUserLogged().subscribe(resp => {
+      this.userLogged = resp;
+    })
   }
 }

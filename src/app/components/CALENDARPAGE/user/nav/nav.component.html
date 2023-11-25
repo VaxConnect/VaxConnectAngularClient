@@ -1,9 +1,17 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="userLogged">
+        <button ngbNavLink class="navSection">{{userLogged.name}} {{userLogged.lastName}}</button>
+        <ng-template ngbNavContent>
+            <!-- Calendar of logged user -->
+            <p>{{userLogged.birthDate}}</p>
+        </ng-template>
+    </li>
     @for (d of dependentList; track $index) {
     <li [ngbNavItem]="d">
-        <button ngbNavLink>{{d.name}} {{d.lastName}}</button>
+        <button ngbNavLink class="navSection">{{d.name}} {{d.lastName}}</button>
         <ng-template ngbNavContent>
             <p>{{d.birthDate}}</p>
+            <!-- Registered user's dependent calendar -->
         </ng-template>
     </li>
     }
