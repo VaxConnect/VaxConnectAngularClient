@@ -21,13 +21,14 @@ export class LogInComponent {
   })
 
   profileRegister = new FormGroup({
-    mail: new FormControl(''),
+    email: new FormControl(''),
     name: new FormControl(''),
     lastName: new FormControl(''),
     password: new FormControl(''),
-    repeatPassword: new FormControl(''),
+    verifyPassword: new FormControl(''),
+    dni: new FormControl(''),
     phone: new FormControl(''),
-    bDay: new FormControl('')
+    birthDate: new FormControl('')
   })
 
   changePage() {
@@ -42,10 +43,33 @@ export class LogInComponent {
     this.loginService.LoginResponse(this.profileLogin.value.mail!, this.profileLogin.value.password!).subscribe(p => {
       localStorage.setItem('TOKEN', p.token)
       localStorage.setItem('USER_ID', p.id)
+      if (localStorage.getItem('TOKEN') != undefined)
+        window.location.href = "http://localhost:4200/home-page"
     })
   }
 
   register() {
-    this.loginService.RegisterResponse
+    this.loginService.RegisterResponse(
+      this.profileRegister.value.email!,
+      this.profileRegister.value.name!,
+      this.profileRegister.value.lastName!,
+      this.profileRegister.value.password!,
+      this.profileRegister.value.verifyPassword!,
+      this.profileRegister.value.dni!,
+      this.profileRegister.value.phone!,
+      this.profileRegister.value.birthDate!
+    ).subscribe(p => {
+      if (p.id != undefined) {
+        console.log(p.avatar)
+        console.log(p.createdAt)
+        console.log(p.fullName)
+        console.log(p.id)
+        console.log(p.mail)
+        this.profileLogin.value.mail = p.mail;
+        this.profileLogin.value.password = this.profileRegister.value.password;
+        this.login()
+      }
+
+    })
   }
 } 

@@ -4,7 +4,7 @@ import { LogInComponent } from './ui/log-in/log-in.component';
 import { HomePageComponent } from './ui/USER/home-page/home-page.component';
 import { CalendarPageComponent } from './ui/USER/calendar-page/calendar-page.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
-import { VaccinesPageComponent } from './ui/vaccines-page/vaccines-page.component';
+import { VaccinesPageComponent } from './ui/USER/vaccine-page/vaccines-page.component';
 
 const routes: Routes = [
   { path: 'calendar-page', component: CalendarPageComponent },

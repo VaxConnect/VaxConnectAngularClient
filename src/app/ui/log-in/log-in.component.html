@@ -40,7 +40,7 @@
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="email address" formControlName="mail">
+          placeholder="email address" formControlName="email">
       </div>
       <div class="row" style="margin-bottom: 10px !important">
         <div class="col-6" style="margin-bottom: 10px !important">
@@ -56,13 +56,19 @@
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repeat password"
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
           formControlName="password">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Repeat Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-          formControlName="repeatPassword">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repeat password"
+          formControlName="verifyPassword">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="your dni"
+          formControlName="dni">
+      </div>
         <div class="row" style="margin-bottom: 10px !important">
           <div class="col-6" style="margin-bottom: 10px !important">
             <label for="phonenumber" class="form-label">Phone Number</label>
@@ -72,10 +78,10 @@
           <div class="col-6" style="margin-bottom: 10px !important">
             <label for="birthday" class="form-label">BirthDay</label>
             <input type="date" class="form-control" id="birthday" aria-describedby="birthday" placeholder="Birth day"
-              formControlName="bDay">
+              formControlName="birthDay">
           </div>
         </div>
-      </div>
+      
       <button type="submit" class="button-submit">Sign In</button>
     </form>
   </div>
