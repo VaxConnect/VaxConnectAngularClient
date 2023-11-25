@@ -41,3 +41,8 @@ ul li {
 li>a.active {
     color: #C62E65 !important;
 }
+
+img {
+    width:200px;
+    padding: 0;
+}

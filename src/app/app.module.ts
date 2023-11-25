@@ -15,6 +15,8 @@ import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
+import { VaccinesPageComponent } from './ui/USER/vaccine-page/vaccines-page.component';
+import { VacuneItemComponent } from './components/VACCINEPAGE/vacune-item/vacune-item.component';
 import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sanitary-home-page.component';
 import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/youngest-patients/youngest-patients.component';
 
@@ -35,6 +37,9 @@ import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/younge
     NextVacinnesComponent,
     LogInComponent,
     PageNotFoundComponent,
+    VaccinesPageComponent,
+    VaccinesPageComponent,
+    VacuneItemComponent,
     SanitaryHomePageComponent,
     YoungestPatientsComponent
   ],
