@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sanitary-home-page.component';
 import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/youngest-patients/youngest-patients.component';
+import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.component';
+import { UserDataComponent } from './components/USER/user-data/user-data.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/younge
     LogInComponent,
     PageNotFoundComponent,
     SanitaryHomePageComponent,
-    YoungestPatientsComponent
+    YoungestPatientsComponent,
+    PageMyprofileComponent,
+    UserDataComponent
   ],
   imports: [
     BrowserModule,
