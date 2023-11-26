@@ -1,325 +1,141 @@
 import { Component } from '@angular/core';
+import { type } from 'node:os';
 type Vacuna = {
-  id: string;
+  id: number;
   nombre: string;
+  edadess:Edad[],
+  
 };
 
 type Paciente = {
   id: string;
   nombre: string;
   apellido: string;
+  edades1:Edad[]
   vacunas: Vacuna[];
-  administraciones:Administracion[];
+
 };
-type Administracion={
-  id:string;
-  fecha:string;
-  hora:string;
-  
+
+type Edad={
+  id:number,
+  edad:string
 }
+const Edades: Edad[] = [
+  {
+    id:1,
+    edad:'pre-natal'
+  },
+  {
+    id:2,
+    edad:'0'
+  },
+  {
+    id:3,
+    edad:'2'
+  },
+  {
+    id:4,
+    edad:'4'
+  },
+  {
+    id:5,
+    edad:'6'
+  },
+  {
+    id:6,
+    edad:'11'
+  },
+  {
+    id:7,
+    edad:'12'
+  },
+  {
+    id:8,
+    edad:'15'
+  },
+  {
+    id:9,
+    edad:'3-4'
+  },
+  {
+    id:10,
+    edad:'5'
+  },
+  {
+    id:11,
+    edad:'6'
+  },
+  {
+    id:12,
+    edad:'12'
+  },
+  {
+    id:13,
+    edad:'14'
+  },
+  {
+    id:14,
+    edad:'15-18'
+  },
+  {
+    id:15,
+    edad:'19-64'
+  },
+  {
+    id:16,
+    edad:'65'
+  },
+]
 const Pacientes: Paciente[] = [
   {
     id: '1',
     nombre: 'Angel',
     apellido: 'repollero',
-    vacunas: [
+    edades1:[
       {
-        id: '1',
-        nombre: 'guapura'
+        id:14,
+        edad:'15-18'
       }
     ],
-    administraciones:[
+    vacunas: [
       {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
+        id: 1,
+        nombre: 'diabetes',
         
-      }
-    ]
-  },
-  {
-    id: '2',
-    nombre: 'raul',
-    apellido: 'frantch',
-    vacunas: [
+        edadess:[
+          {
+            id:11,
+            edad:'0'
+          }
+        ],
+      },
       {
-        id: '2',
-        nombre: 'primeran'
-      }
-    ],
-    administraciones:[
-      {
-        id:"2",
-        fecha:"1/02/1999",
-        hora:"10:00"
-      }
-    ]
-  },
-  {
-    id: '3',
-    nombre: 'juan',
-    apellido: 'martinez',
-    vacunas: [
-      {
-        id: '3',
-        nombre: 'gripe a'
-      }
-    ],
-    administraciones:[
-      {
-        id:"3",
-        fecha:"1/02/1999",
-        hora:"08:00"
-      }
-    ]
-  },
-  {
-    id: '4',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '4',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
+        id: 2,
+        nombre: 'escoliosis',
         
-      }
-    ]
-  },
-  {
-    id: '5',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
+        edadess:[
+          {
+            id:3,
+            edad:'0'
+          }
+        ],
+      },
       {
-        id: '5',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
+        id: 3,
+        nombre: ' lepra',
         
-      }
-    ]
-  },
-  {
-    id: '6',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '6',
-        nombre: 'guapura'
-      }
+        edadess:[
+          {
+            id:6,
+            edad:'0'
+          }
+        ],
+      },
     ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
+    
   },
-  {
-    id: '7',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '7',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '8',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '8',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '9',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '9',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '10',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '10',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '11',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '11',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '12',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '12',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '13',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '13',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '14',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '14',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '15',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '15',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
-  {
-    id: '16',
-    nombre: 'Angel',
-    apellido: 'repollero',
-    vacunas: [
-      {
-        id: '16',
-        nombre: 'guapura'
-      }
-    ],
-    administraciones:[
-      {
-        id:"1",
-        fecha:"1/02/1999",
-        hora:"16:00"
-        
-      }
-    ]
-  },
+  
+ 
   
 ];
 @Component({
@@ -328,5 +144,39 @@ const Pacientes: Paciente[] = [
   styleUrl: './calendary.component.css'
 })
 export class CalendaryComponent {
+  e = Edades;
   p = Pacientes;
+  pa!: Paciente[];
+
+  esmayorId(paciente: Paciente) {
+    const edadVacuna = parseInt(paciente.vacunas[0].edadess[0].edad, 10);
+    const [min, max] = paciente.edades1[0].edad.split('-').map((e) => parseInt(e, 10));
+
+    return !isNaN(edadVacuna) && !isNaN(min) && !isNaN(max) && edadVacuna >= min && edadVacuna <= max;
+  }
+
+  esEdadAdministrada(paciente: Paciente, vacuna: Vacuna, edad: Edad) {
+    const [min, max] = paciente.edades1[0].edad.split('-').map((e) => parseInt(e, 10));
+    return (
+      min >= edad.id &&
+      max >= edad.id &&
+      vacuna.edadess.some((e) => e.id === edad.id)
+    );
+  }
+  getIndexForEdad(edad: Edad): number {
+    return this.e.findIndex(e => e.id === edad.id);
+  }
+
+  esEdadActual(edad: Edad): boolean {
+    return this.p[0].edades1[0].id === edad.id; // Ajusta según tu lógica
+  }
 }
+  
+  
+  
+  
+  
+  
+  
+
+

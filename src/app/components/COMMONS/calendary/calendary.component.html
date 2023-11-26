@@ -1,42 +1,55 @@
-<h1 class="text-center">calendario</h1>
-<div class="div">
-    <div class="d-flex ms-5 w-100" >
-        <div class="arriba">
-            <div *ngFor="let pa of p" class="  text-center"  style="width: 64.38px;  margin-left: 17.81px; margin-right: 17.81px;" >{{pa.id}}</div>
-        </div>
-    </div>
+<style>
+  .container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: auto;
+  }
 
-<div class="d-flex ">
-    <div class="columna">
-        <div *ngFor="let pa of p" class="ms-4 border mt-2 text-center" style="width: 200px; height: 50.46px;">
-        {{pa.vacunas[0].id}}
-        </div>
-   </div>
-   <div>
-    <div class="d-flex mt-2 " style="height: 50.46px; width: 100%;">
-        <div *ngFor="let pa of p" class=" border text-center position-relative " style="width: 64.38px; height: 50.46px; margin-left: 17.81px; margin-right: 17.81px;">
-            {{pa.vacunas[0].id}}
-            </div>
-            
-        
-       </div>
-       <div class="d-flex mt-2 " style="height: 50.46px;">
-        <div *ngFor="let pe of p" class=" border text-center position-relative"  style="width: 64.38px; height: 50.46px; margin-left: 17.81px; margin-right: 17.81px;">
-            {{pe.vacunas[0].id}}
-            </div>
-            
-        
-       </div>
-   </div>
-   
-   
-   
-</div>
-  
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 10px;
+  }
 
+  th, td {
+    width: auto;
+    height: 100px;
+    border: 1px solid #ddd;
+    text-align: center;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+</style>
 
-
-
-
-
+<div class="container"> 
+  <table class="table-container">
+    <thead>
+      <tr>
+        <th class="border-0"></th>
+        <th class="shadow p-3 mb-5 bg-body-tertiary rounded" *ngFor="let edad of e; let i = index" class="border-0" [ngStyle]="{ 'background-color': esEdadActual(edad) ? 'darkgray' : '' }">{{ edad.edad }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let paciente of p">
+        <tr *ngFor="let vacuna of paciente.vacunas">
+          <td class="shadow p-3 mb-5 bg-body-tertiary rounded">{{ vacuna.nombre }}</td>
+          <ng-container *ngFor="let edad of e">
+            <td class="shadow p-3 mb-5 bg-body-tertiary rounded" *ngIf="esEdadAdministrada(paciente,vacuna,  edad); else noCell">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8"/>
+              </svg>
+            </td>
+            <ng-template #noCell>
+              <td class="shadow p-3 mb-5 bg-body-tertiary rounded" style="color: transparent;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                  <circle cx="8" cy="8" r="8"/>
+                </svg>
+              </td>
+            </ng-template>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
 </div>
