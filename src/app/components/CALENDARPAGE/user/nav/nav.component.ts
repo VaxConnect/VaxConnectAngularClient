@@ -1,33 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PatientService } from '../../../../services/patient.service';
+import { patientBasicDataResponse } from '../../../../models/patient-data.interface';
 
-type Pacient = {
-  id: string,
-  nombre: string,
-  notes: string
-}
-
-
-const Pacients: Pacient[] = [
-  {
-    id: '1',
-    nombre: "hola",
-    notes: "aaaaa"
-  },
-  {
-    id: '2',
-    nombre: "hola2",
-    notes: "bbbbb"
-  }
-
-]
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
-export class NavComponent {
-  pacients = Pacients;
-
+export class NavComponent implements OnInit {
+  patientList: patientBasicDataResponse[] = [];
+  userLogged!: patientBasicDataResponse;
   active = 1;
+
+  constructor(private patientService: PatientService) { }
+
+  ngOnInit(): void {
+
+    this.patientService.GetUserLogged().subscribe(resp => {
+      this.userLogged = resp;
+      this.patientList.push(this.userLogged);
+
+      this.patientService.GetUserDependents().subscribe(resp => {
+        this.patientList = this.patientList.concat(resp);
+      });
+
+    });
+  }
 }

@@ -1,3 +1,3 @@
 export const environment = {
-    HeadUrl: 'http://localhost:8080/',
+    HeadUrl: 'http://localhost:8080',
 };

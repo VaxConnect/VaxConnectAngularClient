@@ -25,17 +25,12 @@ import { UserDataComponent } from './components/USER/user-data/user-data.compone
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent,
-    LastVacinnesComponent,
-    NextVacinnesComponent,
-    LogInComponent,
-    CalendarPageComponent,
     NavComponent,
     NavbarComponent,
     FooterComponent,
     HomePageComponent,
-    LogInComponent,
     LastVacinnesComponent,
+    CalendarPageComponent,
     NextVacinnesComponent,
     LogInComponent,
     PageNotFoundComponent,
@@ -45,7 +40,7 @@ import { UserDataComponent } from './components/USER/user-data/user-data.compone
     SanitaryHomePageComponent,
     YoungestPatientsComponent,
     PageMyprofileComponent,
-    UserDataComponent
+    UserDataComponent,
   ],
   imports: [
     BrowserModule,
