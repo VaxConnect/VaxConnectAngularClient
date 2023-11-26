@@ -21,6 +21,7 @@ import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sani
 import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/youngest-patients/youngest-patients.component';
 import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.component';
 import { UserDataComponent } from './components/USER/user-data/user-data.component';
+import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UserDataComponent } from './components/USER/user-data/user-data.compone
     YoungestPatientsComponent,
     PageMyprofileComponent,
     UserDataComponent,
+    PatientsPageComponent,
   ],
   imports: [
     BrowserModule,
