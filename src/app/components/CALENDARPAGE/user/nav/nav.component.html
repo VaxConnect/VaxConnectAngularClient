@@ -1,17 +1,12 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-    <li [ngbNavItem]="userLogged">
-        <button ngbNavLink class="navSection">{{userLogged.name}} {{userLogged.lastName}}</button>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mt-3">
+    @for (p of patientList; track $index) {
+    <li [ngbNavItem]="p">
+        <button ngbNavLink class="navSection">{{p.name}} {{p.lastName}}</button>
         <ng-template ngbNavContent>
-            <!-- Calendar of logged user -->
-            <p>{{userLogged.birthDate}}</p>
-        </ng-template>
-    </li>
-    @for (d of dependentList; track $index) {
-    <li [ngbNavItem]="d">
-        <button ngbNavLink class="navSection">{{d.name}} {{d.lastName}}</button>
-        <ng-template ngbNavContent>
-            <p>{{d.birthDate}}</p>
-            <!-- Registered user's dependent calendar -->
+            <p>{{p.birthDate}}</p> <!-- para comprobar que funciona, esto se quita -->
+
+            <!-- Patients calendar component -->
+
         </ng-template>
     </li>
     }
