@@ -9,3 +9,7 @@
 td img {
     width: 60px;
 }
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+    background-color: #C62E65;
+}

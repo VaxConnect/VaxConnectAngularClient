@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../../models/get-all-patients.interface';
 import { PatientService } from '../../../services/patient.service';
 
@@ -7,11 +7,10 @@ import { PatientService } from '../../../services/patient.service';
   templateUrl: './patients-page.component.html',
   styleUrl: './patients-page.component.css'
 })
-export class PatientsPageComponent {
+export class PatientsPageComponent implements OnInit {
   patientList: Patient[] = [];
-  pageNumber: number = 1;
+  pageNumber: number = 0;
   count: number = 0;
-  currentPage: number = 1;
 
   constructor(private patientService: PatientService) { }
 
@@ -20,10 +19,10 @@ export class PatientsPageComponent {
   }
 
   loadNewPage() {
-    this.patientService.GetAll(this.pageNumber).subscribe(resp => {
+    this.patientService.GetAll(this.pageNumber - 1).subscribe(resp => {
       this.patientList = resp.content;
       this.count = resp.totalElements;
-    })
-
+    });
   }
+
 }
