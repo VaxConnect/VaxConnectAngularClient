@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginResponse, RegisterResponse } from '../modules/login.module';
+
 import { environment } from '../../environments/environment.development';
+import { LoginResponse, RegisterResponse } from '../models/login-modules.module';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  LoginResponse(mail: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.HeadUrl}auth/login`,
+  LoginResponseUser(mail: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${environment.HeadUrl}/auth/login`,
+      // return this.http.post<LoginResponse>(`${environment.HeadUrl}/auth/login`,
       {
         "mail": `${mail}`,
         "password": `${password}`
@@ -20,16 +22,25 @@ export class LoginService {
     );
   }
 
-  RegisterResponse(email: string, 
-    name: String, 
-    lastName: String, 
+  LoginResponseAdmin(mail: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${environment.HeadUrl}/auth/login/sanitary`,
+      {
+        "mail": `${mail}`,
+        "password": `${password}`
+      }
+    );
+  }
+
+  RegisterResponse(email: string,
+    name: String,
+    lastName: String,
     password: string,
     verifyPassword: String,
     dni: String,
     phoneNumber: String,
     birthDate: String
-    ): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(`${environment.HeadUrl}auth/register`,
+  ): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(`${environment.HeadUrl}/auth/register`,
       {
         "email": `${email}`,
         "name": `${name}`,
@@ -38,7 +49,7 @@ export class LoginService {
         "verifyPassword": `${verifyPassword}`,
         "dni": `${dni}`,
         "phoneNumber": `${phoneNumber}`,
-        "birthDate": `${birthDate}` 
+        "birthDate": `${birthDate}`
       }
     );
   }

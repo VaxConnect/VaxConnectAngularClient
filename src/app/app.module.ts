@@ -16,36 +16,41 @@ import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
+import { CalendaryComponent } from './components/COMMONS/calendary/calendary.component';
 import { VaccinesPageComponent } from './ui/USER/vaccine-page/vaccines-page.component';
 import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sanitary-home-page.component';
 import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/youngest-patients/youngest-patients.component';
 import { VacuneItemComponent } from './components/VACCINEPAGE/vacune-item/vacune-item.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.component';
+import { UserDataComponent } from './components/USER/user-data/user-data.component';
+import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DependientComponent } from './components/USER/dependient/dependient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent,
-    LastVacinnesComponent,
-    NextVacinnesComponent,
-    LogInComponent,
-    CalendarPageComponent,
     NavComponent,
     NavbarComponent,
     FooterComponent,
     HomePageComponent,
-    LogInComponent,
     LastVacinnesComponent,
+    CalendarPageComponent,
     NextVacinnesComponent,
     LogInComponent,
     PageNotFoundComponent,
-    VaccinesPageComponent,
+    CalendaryComponent,
     VaccinesPageComponent,
     VacuneItemComponent,
     VacuneListComponent,
     SanitaryHomePageComponent,
-    YoungestPatientsComponent
+    YoungestPatientsComponent,
+    PageMyprofileComponent,
+    UserDataComponent,
+    PatientsPageComponent,
+    DependientComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration()
