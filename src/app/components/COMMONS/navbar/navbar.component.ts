@@ -8,5 +8,11 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  isAdmin() {
+    if (localStorage.getItem('IS_ADMIN') == "true") {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
