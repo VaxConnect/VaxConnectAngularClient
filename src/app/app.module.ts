@@ -55,7 +55,7 @@ import { DependientComponent } from './components/USER/dependient/dependient.com
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     provideClientHydration()
