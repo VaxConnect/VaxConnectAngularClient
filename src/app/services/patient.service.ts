@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { patientBasicDataResponse } from '../models/patient-data.interface';
 import { environment } from '../../environments/environment.development';
+import { GetAllPatientsResponse } from '../models/get-all-patients.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,17 @@ export class PatientService {
           'Authorization': `Bearer ${token}`
         }
       });
+  }
+
+  GetAll(page: number): Observable<GetAllPatientsResponse> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<GetAllPatientsResponse>(`${environment.HeadUrl}/sanitary/patient?page=${page}`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
   }
 }

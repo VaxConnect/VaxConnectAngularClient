@@ -22,6 +22,7 @@ import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/younge
 import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.component';
 import { UserDataComponent } from './components/USER/user-data/user-data.component';
 import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page
     HttpClientModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration()

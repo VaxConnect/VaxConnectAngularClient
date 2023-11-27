@@ -17,13 +17,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @for (p of patientList; track $index) {
                         <tr>
-                            <!-- @for (item of items; track $index) {} -->
-                            <td><img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg"
-                                    class="img-responsive" alt="patient avatar" /></td>
-                            <td class="pt-4">Juan</td>
-                            <td class="pt-4">juangmail.com</td>
-                            <td class="pt-4">01-05-2001</td>
+                            <td><img src={{p.fotoUrl}} class="img-responsive" alt="patient avatar" /></td>
+                            <td class="pt-4">{{p.name}} {{p.lastName}}</td>
+                            <td class="pt-4">{{p.email}}</td>
+                            <td class="pt-4">{{p.birthDate}}</td>
                             <td class="pt-3">
                                 <button type="button" class="btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white"
@@ -47,6 +46,7 @@
                                 </button>
                             </td>
                         </tr>
+                        }
                     </tbody>
                 </table>
             </div>

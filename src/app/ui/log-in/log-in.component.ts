@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { LoginResponse } from '../../modules/login.module';
 
 
 @Component({
@@ -40,11 +39,20 @@ export class LogInComponent {
   }
 
   login() {
-    this.loginService.LoginResponse(this.profileLogin.value.mail!, this.profileLogin.value.password!).subscribe(p => {
+    this.loginService.LoginResponseUser(this.profileLogin.value.mail!, this.profileLogin.value.password!).subscribe(p => {
       localStorage.setItem('TOKEN', p.token)
       localStorage.setItem('USER_ID', p.id)
+      localStorage.setItem('IS_ADMIN', "false")
       if (localStorage.getItem('TOKEN') != undefined)
         window.location.href = "http://localhost:4200/home-page"
+    })
+
+    this.loginService.LoginResponseAdmin(this.profileLogin.value.mail!, this.profileLogin.value.password!).subscribe(p => {
+      localStorage.setItem('TOKEN', p.token)
+      localStorage.setItem('USER_ID', p.id)
+      localStorage.setItem('IS_ADMIN', "true")
+      if (localStorage.getItem('TOKEN') != undefined)
+        window.location.href = "http://localhost:4200/sanitary-home-page"
     })
   }
 
