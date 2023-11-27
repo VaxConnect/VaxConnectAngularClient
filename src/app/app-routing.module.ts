@@ -10,7 +10,7 @@ import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sani
 const routes: Routes = [
   { path: 'calendar-page', component: CalendarPageComponent },
   { path: 'login', component: LogInComponent },
-  { path: 'vaccines', component: VaccinesPageComponent },
+  { path: 'vaccine', component: VaccinesPageComponent },
   { path: 'home-page', component: HomePageComponent },
   { path: 'sanitary-home-page', component: SanitaryHomePageComponent },
   { path: '', pathMatch: 'full', redirectTo: '/login' },

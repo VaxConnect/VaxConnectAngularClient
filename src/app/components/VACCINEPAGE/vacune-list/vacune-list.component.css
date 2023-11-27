@@ -1,0 +1,23 @@
+.cositas {
+    overflow: auto;
+    box-sizing: border-box;
+    height: 20% !important;
+}
+
+div.row {
+    overflow: auto;
+}
+
+div.row::-webkit-scrollbar {
+    border-radius: 20px;
+    background-color: #303030;
+}
+
+div.row::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #757575;
+}
+
+app-cartelera-lista-item {
+    width: 100%;
+}

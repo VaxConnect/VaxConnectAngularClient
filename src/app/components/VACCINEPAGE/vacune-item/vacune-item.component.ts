@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Vacune } from '../../../modules/vacune.module';
 
 @Component({
   selector: 'app-vacune-item',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './vacune-item.component.css'
 })
 export class VacuneItemComponent {
+  @Input() vacune: Vacune | undefined;
 
 }
+

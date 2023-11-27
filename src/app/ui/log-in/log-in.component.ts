@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { LoginResponse } from '../../modules/login.module';
-
 
 @Component({
   selector: 'app-log-in',
@@ -60,16 +58,10 @@ export class LogInComponent {
       this.profileRegister.value.birthDate!
     ).subscribe(p => {
       if (p.id != undefined) {
-        console.log(p.avatar)
-        console.log(p.createdAt)
-        console.log(p.fullName)
-        console.log(p.id)
-        console.log(p.mail)
         this.profileLogin.value.mail = p.mail;
         this.profileLogin.value.password = this.profileRegister.value.password;
         this.login()
       }
-
     })
   }
 } 

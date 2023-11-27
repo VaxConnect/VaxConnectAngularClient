@@ -1,1 +1,9 @@
-<p>vacune-list works!</p>
+<div class="cositas d-flex align-items-center justify-content-center row p-0 mt-2" style="width: 100%;">
+    <ng-container *ngFor="let i of items">
+        <div class="row my-2 mx-1 p-0 d-flex col-sm-3 col-md-2">
+            <app-vacune-item [vacune]="i"></app-vacune-item>
+        </div>
+    </ng-container>
+
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="collectionSize" />
+</div>
