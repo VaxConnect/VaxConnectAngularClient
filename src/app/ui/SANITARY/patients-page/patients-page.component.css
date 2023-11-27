@@ -1,0 +1,11 @@
+.btn {
+    background-color: #C62E65;
+}
+
+.btn:hover {
+    background-color: #ab174d;
+}
+
+td img {
+    width: 60px;
+}
