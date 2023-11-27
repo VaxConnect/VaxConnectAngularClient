@@ -3,15 +3,15 @@ import { type } from 'node:os';
 type Vacuna = {
   id: number;
   nombre: string;
-  edadess:Edad[],
+  edadess:Edad[];
   
-};
+  };
 
-type Paciente = {
+
+type PacienteDto = {
   id: string;
-  nombre: string;
-  apellido: string;
-  edades1:Edad[]
+  fullname:string;
+  edades1:Edad[];
   vacunas: Vacuna[];
 
 };
@@ -86,14 +86,13 @@ const Edades: Edad[] = [
     edad:'65'
   },
 ]
-const Pacientes: Paciente[] = [
+const Pacientes: PacienteDto[] = [
   {
     id: '1',
-    nombre: 'Angel',
-    apellido: 'repollero',
+ fullname:"rebolledo",
     edades1:[
       {
-        id:14,
+        id:12,
         edad:'15-18'
       }
     ],
@@ -101,13 +100,19 @@ const Pacientes: Paciente[] = [
       {
         id: 1,
         nombre: 'diabetes',
+
         
         edadess:[
           {
             id:11,
             edad:'0'
+          },
+          {
+            id:16,
+            edad:"0"
           }
         ],
+        
       },
       {
         id: 2,
@@ -117,8 +122,17 @@ const Pacientes: Paciente[] = [
           {
             id:3,
             edad:'0'
+          },
+          {
+            id:4,
+            edad:"4"
+          },
+          {
+            id:8,
+            edad:"4"
           }
         ],
+        
       },
       {
         id: 3,
@@ -130,6 +144,7 @@ const Pacientes: Paciente[] = [
             edad:'0'
           }
         ],
+       
       },
     ],
     
@@ -146,16 +161,16 @@ const Pacientes: Paciente[] = [
 export class CalendaryComponent {
   e = Edades;
   p = Pacientes;
-  pa!: Paciente[];
+  pa!: PacienteDto[];
 
-  esmayorId(paciente: Paciente) {
+  esmayorId(paciente: PacienteDto) {
     const edadVacuna = parseInt(paciente.vacunas[0].edadess[0].edad, 10);
     const [min, max] = paciente.edades1[0].edad.split('-').map((e) => parseInt(e, 10));
 
     return !isNaN(edadVacuna) && !isNaN(min) && !isNaN(max) && edadVacuna >= min && edadVacuna <= max;
   }
 
-  esEdadAdministrada(paciente: Paciente, vacuna: Vacuna, edad: Edad) {
+  esEdadAdministrada(paciente: PacienteDto, vacuna: Vacuna, edad: Edad) {
     const [min, max] = paciente.edades1[0].edad.split('-').map((e) => parseInt(e, 10));
     return (
       min >= edad.id &&
@@ -168,7 +183,7 @@ export class CalendaryComponent {
   }
 
   esEdadActual(edad: Edad): boolean {
-    return this.p[0].edades1[0].id === edad.id; // Ajusta según tu lógica
+    return this.p[0].edades1[0].id === edad.id; 
   }
 }
   
