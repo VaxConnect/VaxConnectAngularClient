@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Vacune } from '../../../modules/vacune.module';
 import { VacuneService } from '../../../services/vacune.service';
 import { PageEvent } from '@angular/material/paginator';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-vacune-list',
@@ -14,6 +15,15 @@ export class VacuneListComponent implements OnInit {
   page: number = 0;
 
   constructor(private vacuneService: VacuneService) { }
+
+  searchWord = new FormGroup({
+    word: new FormControl('')
+  })
+
+  search() {
+    
+  }
+
   ngOnInit(): void {
     this.loadData();
   }
