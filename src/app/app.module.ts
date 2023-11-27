@@ -43,6 +43,7 @@ import { DependientComponent } from './components/USER/dependient/dependient.com
     PageNotFoundComponent,
     CalendaryComponent,
     VaccinesPageComponent,
+    VaccinesPageComponent,
     VacuneItemComponent,
     VacuneListComponent,
     SanitaryHomePageComponent,
