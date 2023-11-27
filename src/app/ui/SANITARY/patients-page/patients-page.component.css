@@ -13,3 +13,7 @@ td img {
 ngb-pagination ::ng-deep .page-item.active .page-link {
     background-color: #C62E65;
 }
+
+.offcanvas-head {
+    background-color: #3DA7B3;
+}

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { patientBasicDataResponse } from '../models/patient-data.interface';
 import { environment } from '../../environments/environment.development';
 import { GetAllPatientsResponse } from '../models/get-all-patients.interface';
+import { PatientDetailsResponse } from '../models/patient-details.interface';
+import { DependentsByPatientResponse } from '../models/dependents-by-patient.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,27 @@ export class PatientService {
           'Authorization': `Bearer ${token}`
         }
       });
+  }
 
+  GetById(id: string): Observable<PatientDetailsResponse> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<PatientDetailsResponse>(`${environment.HeadUrl}/sanitary/patient/${id}`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  }
+
+  GetDependents(id: string): Observable<DependentsByPatientResponse[]> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<DependentsByPatientResponse[]>(`${environment.HeadUrl}/sanitary/patient/dependents/${id}`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
   }
 }
