@@ -1,61 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CalendarMomentService } from '../../../../services/calendar-moment.service';
+import { NextVaccinesToImplement } from '../../../../models/next-vaccines-to-implement.module';
 
-type Vacuna = {
-  id: string;
-  nombre: string;
-};
-
-type Paciente = {
-  id: string;
-  nombre: string;
-  apellido: string;
-  vacunas: Vacuna[];
- 
-};
-
-const Pacientes: Paciente[] = [
-  {
-    id: '1',
-    nombre: 'rober',
-    apellido: 'rebolledo',
-    vacunas: [
-      {
-        id: '1',
-        nombre: 'bichitis'
-      }
-    ],
-   
-  },
-  {
-    id: '2',
-    nombre: 'Alex',
-    apellido: 'rubens',
-    vacunas: [
-      {
-        id: '2',
-        nombre: 'gripe'
-      }
-    ],
-   
-  },
-  {
-    id: '3',
-    nombre: 'Pedro',
-    apellido: 'perez',
-    vacunas: [
-      {
-        id: '3',
-        nombre: 'primperan'
-      }
-    ],
-   
-  }
-];
 @Component({
   selector: 'app-next-vacinnes',
   templateUrl: './next-vacinnes.component.html',
   styleUrl: './next-vacinnes.component.css'
 })
-export class NextVacinnesComponent {
-  p = Pacientes;
+export class NextVacinnesComponent implements OnInit{
+  list!:NextVaccinesToImplement[];
+
+  constructor(private calendarMomentService:CalendarMomentService){}
+
+  ngOnInit(): void {
+    this.calendarMomentService.getNextVaccinesToImplement().subscribe(resp=>{
+      this.list=resp;
+    })
+  }
 }

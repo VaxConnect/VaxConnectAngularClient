@@ -178,7 +178,7 @@ export class CalendaryComponent {
   }
 
   esEdadActual(edad: Edad): boolean {
-    return this.p.age === edad.month;
+    return this.p.age == edad.month;
   }
 }
 
