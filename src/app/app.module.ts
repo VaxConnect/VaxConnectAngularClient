@@ -39,7 +39,7 @@ import { DependientComponent } from './components/USER/dependient/dependient.com
     NextVacinnesComponent,
     LogInComponent,
     PageNotFoundComponent,
-    CalendaryComponent
+    CalendaryComponent,
     VaccinesPageComponent,
     VaccinesPageComponent,
     VacuneItemComponent,
