@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginResponse } from '../modules/login.module';
+
 import { environment } from '../../environments/environment.development';
+import { LoginResponse, RegisterResponse } from '../models/login-modules.module';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,29 @@ export class LoginService {
       {
         "mail": `${mail}`,
         "password": `${password}`
+      }
+    );
+  }
+
+  RegisterResponse(email: string,
+    name: String,
+    lastName: String,
+    password: string,
+    verifyPassword: String,
+    dni: String,
+    phoneNumber: String,
+    birthDate: String
+  ): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(`${environment.HeadUrl}/auth/register`,
+      {
+        "email": `${email}`,
+        "name": `${name}`,
+        "lastName": `${lastName}`,
+        "password": `${password}`,
+        "verifyPassword": `${verifyPassword}`,
+        "dni": `${dni}`,
+        "phoneNumber": `${phoneNumber}`,
+        "birthDate": `${birthDate}`
       }
     );
   }
