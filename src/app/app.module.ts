@@ -15,6 +15,9 @@ import { LastVacinnesComponent } from './components/HOMEPAGE/User/last-vacinnes/
 import { NextVacinnesComponent } from './components/HOMEPAGE/User/next-vacinnes/next-vacinnes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
+
+import { CalendaryComponent } from './components/COMMONS/calendary/calendary.component';
+
 import { VaccinesPageComponent } from './ui/USER/vaccine-page/vaccines-page.component';
 import { VacuneItemComponent } from './components/VACCINEPAGE/vacune-item/vacune-item.component';
 import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sanitary-home-page.component';
@@ -23,6 +26,7 @@ import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.
 import { UserDataComponent } from './components/USER/user-data/user-data.component';
 import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DependientComponent } from './components/USER/dependient/dependient.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NextVacinnesComponent,
     LogInComponent,
     PageNotFoundComponent,
+    CalendaryComponent
     VaccinesPageComponent,
     VaccinesPageComponent,
     VacuneItemComponent,
@@ -44,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PageMyprofileComponent,
     UserDataComponent,
     PatientsPageComponent,
+    DependientComponent,
   ],
   imports: [
     BrowserModule,
