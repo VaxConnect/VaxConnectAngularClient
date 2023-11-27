@@ -12,7 +12,7 @@ import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page
 const routes: Routes = [
   { path: 'calendar-page', component: CalendarPageComponent },
   { path: 'login', component: LogInComponent },
-  { path: 'vaccines', component: VaccinesPageComponent },
+  { path: 'vaccine', component: VaccinesPageComponent },
   { path: 'home-page', component: HomePageComponent },
   { path: 'user-detail-home', component: PageMyprofileComponent },
   { path: 'sanitary-home-page', component: SanitaryHomePageComponent },

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { LogInComponent } from './ui/log-in/log-in.component';
 import { NavComponent } from './components/CALENDARPAGE/user/nav/nav.component';
 import { NavbarComponent } from './components/COMMONS/navbar/navbar.component';
@@ -17,9 +18,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { CalendaryComponent } from './components/COMMONS/calendary/calendary.component';
 import { VaccinesPageComponent } from './ui/USER/vaccine-page/vaccines-page.component';
-import { VacuneItemComponent } from './components/VACCINEPAGE/vacune-item/vacune-item.component';
 import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sanitary-home-page.component';
 import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/youngest-patients/youngest-patients.component';
+import { VacuneItemComponent } from './components/VACCINEPAGE/vacune-item/vacune-item.component';
+import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.component';
 import { UserDataComponent } from './components/USER/user-data/user-data.component';
 import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page.component';
@@ -41,6 +44,7 @@ import { DependientComponent } from './components/USER/dependient/dependient.com
     CalendaryComponent,
     VaccinesPageComponent,
     VacuneItemComponent,
+    VacuneListComponent,
     SanitaryHomePageComponent,
     YoungestPatientsComponent,
     PageMyprofileComponent,
@@ -56,6 +60,8 @@ import { DependientComponent } from './components/USER/dependient/dependient.com
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration()
