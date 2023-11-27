@@ -1,9 +1,12 @@
-<div class="cositas d-flex align-items-center justify-content-center row p-0 mt-2" style="width: 100%;">
+<div class="cositas d-flex align-items-center justify-content-center row p-0 mt-2"
+    style="min-height: 400px; width: 100%;">
     <ng-container *ngFor="let i of items">
-        <div class="row my-2 mx-1 p-0 d-flex col-sm-3 col-md-2">
+        <div class="row my-2 mx-1 p-0 d-flex col-sm-5 col-md-5">
             <app-vacune-item [vacune]="i"></app-vacune-item>
         </div>
     </ng-container>
-
-    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="collectionSize" />
 </div>
+
+<mat-paginator [length]="pageLength" [pageSize]="10" showFirstLastButtons="true" (page)="changePage($event)"
+    aria-label="Select page">
+</mat-paginator>

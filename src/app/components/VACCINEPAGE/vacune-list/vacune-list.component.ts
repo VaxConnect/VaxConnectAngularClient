@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vacune } from '../../../modules/vacune.module';
 import { VacuneService } from '../../../services/vacune.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-vacune-list',
@@ -9,21 +10,29 @@ import { VacuneService } from '../../../services/vacune.service';
 })
 export class VacuneListComponent implements OnInit {
   items: Vacune[] = [];
-  pageSize!: number;
-  page!: number;
-  collectionSize!: number;
+  pageLength: number | undefined;
+  page: number = 0;
 
   constructor(private vacuneService: VacuneService) { }
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  changePage($event: PageEvent): void {
+    console.log($event)
+    this.page = $event.pageIndex;
+    this.loadData()
+  }
+
+  loadData() {
     this.getItems();
   }
 
   getItems() {
-    this.vacuneService.getAllVacine().subscribe(v => {
+    this.vacuneService.getAllVacine(this.page).subscribe(v => {
       this.items = v.content;
-      this.pageSize = v.size;
-      this.page = v.totalElements;
-      this.collectionSize = v.totalElements;
+      this.pageLength = v.totalElements;
+      this.page = v.pageable.pageNumber;
     })
   }
 }

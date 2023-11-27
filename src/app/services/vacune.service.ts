@@ -11,8 +11,8 @@ export class VacuneService {
 
   constructor(private http: HttpClient) { }
 
-  getAllVacine(): Observable<VacuneResponse> {
-    return this.http.get<VacuneResponse>(`${environment.HeadUrl}vacune/all`,
+  getAllVacine(page: number): Observable<VacuneResponse> {
+    return this.http.get<VacuneResponse>(`${environment.HeadUrl}vacune/all?page=${page}`,
       {
         headers: {
           'Content-Type': 'application/json',

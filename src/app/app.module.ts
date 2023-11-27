@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { LogInComponent } from './ui/log-in/log-in.component';
 import { NavComponent } from './components/CALENDARPAGE/user/nav/nav.component';
 import { NavbarComponent } from './components/COMMONS/navbar/navbar.component';
@@ -20,6 +21,7 @@ import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sani
 import { YoungestPatientsComponent } from './components/HOMEPAGE/Sanitary/youngest-patients/youngest-patients.component';
 import { VacuneItemComponent } from './components/VACCINEPAGE/vacune-item/vacune-item.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune
     HttpClientModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [
     provideClientHydration()
