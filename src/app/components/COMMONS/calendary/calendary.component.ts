@@ -99,6 +99,28 @@ export class CalendaryComponent {
   @Input() calendar!: CalendarResponse;
   e = Edades;
 
+  hasTheAge(ownCalendar: CalendarResponse, edad: Edad) {
+    var boo: Boolean = false
+    if (!edad.month.includes('-')) {
+      const age = parseInt(edad.month);
+      if (parseInt(ownCalendar.age) == age) {
+        boo = true;
+      }
+    } else {
+      const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+      if (min == null && max == 1) {
+        boo = false;
+      } else {
+        if (min <= parseInt(ownCalendar.age) &&
+          max >= parseInt(ownCalendar.age)) {
+          boo = true;
+        }
+      }
+    }
+    return boo;
+
+  }
+
   isAdministred(vacuna: VaccineOnCalendar, edad: Edad) {
     var boo: Boolean = false
     vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
