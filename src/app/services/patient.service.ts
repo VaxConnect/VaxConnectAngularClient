@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment.development';
 import { GetAllPatientsResponse } from '../models/get-all-patients.interface';
 import { PatientDetailsResponse } from '../models/patient-details.interface';
 import { DependentsByPatientResponse } from '../models/dependents-by-patient.interface';
+import { ChartResponse } from '../models/charts';
 
 @Injectable({
   providedIn: 'root'
@@ -68,4 +69,5 @@ export class PatientService {
         }
       });
   }
+ 
 }

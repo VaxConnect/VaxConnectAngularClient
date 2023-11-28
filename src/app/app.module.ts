@@ -27,6 +27,7 @@ import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependientComponent } from './components/USER/dependient/dependient.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
+import { ChartsComponent } from './components/COMMONS/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune
     UserDataComponent,
     PatientsPageComponent,
     DependientComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,

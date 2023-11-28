@@ -23,12 +23,14 @@ export class VacuneListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(false);
+    console.log("funciona ngoninit")
   }
 
   changePage($event: PageEvent): void {
     console.log($event);
     this.page = $event.pageIndex;
     this.loadData(true);
+    console.log("cambia de pagina")
   }
 
   loadData(changingPage: boolean): void {
@@ -47,6 +49,7 @@ export class VacuneListComponent implements OnInit {
         this.getItemsBySearch();
       }
     }
+    console.log("load data")
   }
 
   search() {

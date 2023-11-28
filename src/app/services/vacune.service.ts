@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { VacuneResponse } from '../modules/vacune.module';
 import { environment } from '../../environments/environment.development';
+import { ChartResponse } from '../models/charts';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,15 @@ export class VacuneService {
           'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
         }
       });
+  }
+  GetGraphicOfVaccinesMoreAdministrated():Observable<ChartResponse>{
+    
+    return this.http.get<ChartResponse>(`${environment.HeadUrl}/sanitary/grafic`,
+    {
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+      }
+    });
   }
 }
