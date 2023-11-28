@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependientComponent } from './components/USER/dependient/dependient.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
 import { ChartsComponent } from './components/COMMONS/charts/charts.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ChartsComponent } from './components/COMMONS/charts/charts.component';
   ],
   imports: [
     BrowserModule,
+    NgxChartsModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
