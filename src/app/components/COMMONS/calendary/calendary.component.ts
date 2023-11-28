@@ -1,64 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { type } from 'node:os';
-type AdministratedPAtientDataDTO = {
-  id: string;
-  fullname: string;
-  age: string;
-  vaccinesImplemented: VaccineImplemented[];
-  vaccinesNonImplemented: VaccineNonImplemented[];
-
-}
-
-
-const VACCINESNONIMPLEMENTED: VaccineNonImplemented[] = [
-
-  {
-    idMomentcalendar: '1',
-    name: 'Neumococo',
-    age: '36-48'
-  },
-  {
-    idMomentcalendar: '2',
-    name: 'Neumococo',
-    age: '168'
-  }
-]
-
-const VACCINESIMPLEMENTED: VaccineImplemented[] = [
-  {
-    idAdministration: '1',
-    name: 'difteria',
-    age: '6'
-  },
-  {
-    idAdministration: '2',
-    name: 'difteria',
-    age: '15'
-  }
-]
-const PATIENT: AdministratedPAtientDataDTO = {
-  id: '1',
-  fullname: 'Manolo manolo manolez',
-  age: '23',
-  vaccinesImplemented: VACCINESIMPLEMENTED,
-  vaccinesNonImplemented: VACCINESNONIMPLEMENTED,
-
-}
-type Vaccine = {
-  name: string;
-}
-
-type VaccineImplemented = {
-  idAdministration: string;
-  name: string;
-  age: string;
-}
-type VaccineNonImplemented = {
-  idMomentcalendar: string;
-  name: string;
-  age: string;
-}
-
+import { AllVaccinesImplemented, CalendarResponse } from '../../../models/calendar-response.module';
 
 type Edad = {
   id: number,
@@ -154,10 +96,10 @@ const Edades: Edad[] = [
   styleUrl: './calendary.component.css'
 })
 export class CalendaryComponent {
+  @Input() calendar!: CalendarResponse;
   e = Edades;
-  p = PATIENT;
 
-  isAdministred(paciente: AdministratedPAtientDataDTO, vacuna: VaccineImplemented, edad: Edad) {
+  isAdministred(paciente: CalendarResponse, vacuna: AllVaccinesImplemented, edad: Edad) {
     const [min, max] = edad.month.split('-').map((e) => parseInt(e, 10));
     if (min >= parseInt(paciente.age) &&
       max >= parseInt(paciente.age)) {
@@ -167,10 +109,10 @@ export class CalendaryComponent {
     }
   }
 
-  isNotAdministred(patient: AdministratedPAtientDataDTO, edad: Edad) {
+  isNotAdministred(patient: CalendarResponse, edad: Edad) {
     var boo: Boolean = false;
-    patient.vaccinesNonImplemented.forEach(vaccine => {
-      if (vaccine.age == edad.month) {
+    patient.vaccinesNotAdministrated.forEach(vaccine => {
+      if (vaccine.age.toString() == edad.month) {
         boo = true;
       }
     })
@@ -178,7 +120,7 @@ export class CalendaryComponent {
   }
 
   esEdadActual(edad: Edad): boolean {
-    return this.p.age == edad.month;
+    return this.calendar.age == edad.month;
   }
 }
 

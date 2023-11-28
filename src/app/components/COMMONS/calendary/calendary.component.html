@@ -34,17 +34,17 @@
     </thead>
     <tbody>
       <ng-container>
-        <tr *ngFor="let vacuna of p.vaccinesImplemented">
-          <td class="shadow p-3 mb-5 bg-body-tertiary rounded w-25 ">{{ vacuna.name }}</td>
+        <tr *ngFor="let vacuna of calendar.allVaccinesImplemented">
+          <td class="shadow p-3 mb-5 bg-body-tertiary rounded w-25 ">{{ vacuna.nameVacune }}</td>
           <ng-container *ngFor="let edad of e">
             <td class="shadow p-3 mb-5 bg-body-tertiary rounded col-md-6">
               @if (
-              isAdministred(p,vacuna, edad);
+              isAdministred(calendar,vacuna, edad);
               ) { <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-circle-fill"
                 viewBox="0 0 16 16">
                 <circle cx="8" cy="8" r="8" />
               </svg>}@else if (
-              isNotAdministred(p,edad)
+              isNotAdministred(calendar,edad)
               ) {
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-circle-fill"
                 viewBox="0 0 16 16">

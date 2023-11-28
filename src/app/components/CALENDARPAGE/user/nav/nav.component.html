@@ -1,14 +1,14 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mt-3">
-    @for (p of patientList; track $index) {
-    <li [ngbNavItem]="p">
-        <button ngbNavLink class="navSection">{{p.name}} {{p.lastName}}</button>
+    @for (calendar of listCalendar; track $index) {
+    <li [ngbNavItem]="calendar.fullname">
+        <button ngbNavLink class="navSection">{{calendar.fullname}}</button>
         <ng-template ngbNavContent>
 
 
-            <app-calendary></app-calendary>
+            <app-calendary [calendar]="calendar"></app-calendary>
 
 
-            <p>{{p.birthDate}}</p> <!-- para comprobar que funciona, esto se quita -->
+            <!-- para comprobar que funciona, esto se quita -->
 
             <!-- Patients calendar component -->
             <!-- Esta es la rama de la muerte-->
