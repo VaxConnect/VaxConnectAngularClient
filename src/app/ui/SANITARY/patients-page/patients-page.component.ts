@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../../models/get-all-patients.interface';
 import { PatientService } from '../../../services/patient.service';
+import { NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
+import { DependentsByPatientResponse } from '../../../models/dependents-by-patient.interface';
 
 @Component({
   selector: 'app-patients-page',
@@ -11,8 +13,18 @@ export class PatientsPageComponent implements OnInit {
   patientList: Patient[] = [];
   pageNumber: number = 0;
   count: number = 0;
+  selectedPatient?: Patient;
+  dependentsList: DependentsByPatientResponse[] = [];
 
-  constructor(private patientService: PatientService) { }
+  constructor(
+    private patientService: PatientService,
+    config: NgbOffcanvasConfig,
+    private offcanvasService: NgbOffcanvas
+  ) {
+    config.position = 'end';
+    config.backdropClass = 'bg-dark';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.loadNewPage();
@@ -23,6 +35,24 @@ export class PatientsPageComponent implements OnInit {
       this.patientList = resp.content;
       this.count = resp.totalElements;
     });
+  }
+  openOffcanvas(patientDetails: any, patient: Patient) {
+    this.patientService.GetById(patient.id).subscribe(resp => {
+      this.selectedPatient = resp;
+      this.offcanvasService.open(patientDetails);
+
+      this.patientService.GetDependents(patient.id).subscribe(resp => {
+        this.dependentsList = resp;
+        this.isDepentListEmpty();
+      });
+    });
+  }
+  isDepentListEmpty() {
+    if (this.dependentsList.length <= 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

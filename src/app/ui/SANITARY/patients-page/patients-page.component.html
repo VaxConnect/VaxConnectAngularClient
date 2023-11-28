@@ -20,7 +20,8 @@
                     @for (p of patientList; track $index) {
                     <tr>
                         <td><img src="{{ p.fotoUrl }}" class="img-responsive" alt="patient avatar" /></td>
-                        <td class="pt-4">{{p.name}} {{p.lastName}}</td>
+                        <td class="pt-4"><button type="button" (click)="openOffcanvas(patientDetails, p)">{{p.name}}
+                                {{p.lastName}}</button></td>
                         <td class="pt-4">{{p.email}}</td>
                         <td class="pt-4">{{p.birthDate}}</td>
                         <td class="pt-3">
@@ -56,3 +57,47 @@
     <ngb-pagination [collectionSize]="count" [pageSize]="8" [rotate]="true" [(page)]="pageNumber"
         (pageChange)="loadNewPage()" aria-label="Default pagination"></ngb-pagination>
 </div>
+
+<ng-template #patientDetails let-offcanvas>
+    <div class="offcanvas-head">
+        <button type="button" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-pencil-square"
+                viewBox="0 0 16 16">
+                <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+            </svg>
+        </button>
+        <div class="offcanvas-img">
+            <img src="{{ selectedPatient?.fotoUrl }}" class="img-responsive" alt="patient avatar" />
+        </div>
+        <div class="d-flex mb-3 mt-3 justify-content-center">
+            <h1 class="offcanvas-title text-light mr-5">
+                <strong>{{selectedPatient?.name}} {{selectedPatient?.lastName}}</strong>
+            </h1>
+        </div>
+    </div>
+    <div class="offcanvas-body p-4">
+        <h2 class="mb-0">Email</h2>
+        <h3>{{selectedPatient?.email}}</h3>
+        <h2 class="mb-0">Dni</h2>
+        <h3>{{selectedPatient?.dni}}</h3>
+        <h2 class="mb-0">BirthDate</h2>
+        <h3>{{selectedPatient?.birthDate}}</h3>
+        <h2 class="mb-0">Phone number</h2>
+        <h3>{{selectedPatient?.phoneNumber}}</h3>
+        <h2 class="mb-0">Relatives</h2>
+        @if (!isDepentListEmpty()) {
+        @for (d of dependentsList; track $index) {
+        <li>{{d.name}} {{d.lastName}}</li>
+        }
+
+        } @else {
+        <!-- Mostrar excepcion -->
+        <!-- Mostrar una excepcion si no tiene dependents es 404 not found -->
+        <p class="text-warning">The patient doesnt have dependents</p>
+        }
+
+    </div>
+</ng-template>
