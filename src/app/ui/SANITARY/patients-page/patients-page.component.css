@@ -8,6 +8,7 @@
 
 td img {
     width: 60px;
+    max-width: 60px;
 }
 
 ngb-pagination ::ng-deep .page-item.active .page-link {
@@ -16,4 +17,19 @@ ngb-pagination ::ng-deep .page-item.active .page-link {
 
 .offcanvas-head {
     background-color: #3DA7B3;
+}
+
+.offcanvas-head img {
+    width: 150px;
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.offcanvas-head .btn {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.offcanvas-img img {
+    margin-left: 30%;
 }

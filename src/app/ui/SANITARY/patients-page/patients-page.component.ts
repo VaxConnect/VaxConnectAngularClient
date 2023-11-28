@@ -39,13 +39,20 @@ export class PatientsPageComponent implements OnInit {
   openOffcanvas(patientDetails: any, patient: Patient) {
     this.patientService.GetById(patient.id).subscribe(resp => {
       this.selectedPatient = resp;
-      console.log(this.selectedPatient.name);
       this.offcanvasService.open(patientDetails);
 
       this.patientService.GetDependents(patient.id).subscribe(resp => {
         this.dependentsList = resp;
+        this.isDepentListEmpty();
       });
     });
-
   }
+  isDepentListEmpty() {
+    if (this.dependentsList.length <= 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
