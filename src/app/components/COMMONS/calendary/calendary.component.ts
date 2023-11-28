@@ -102,6 +102,8 @@ export class CalendaryComponent {
   hasTheAge(ownCalendar: CalendarResponse, edad: Edad) {
     var boo: Boolean = false
     if (!edad.month.includes('-')) {
+      console.log(ownCalendar.age);
+      console.log(edad.month)
       const age = parseInt(edad.month);
       if (parseInt(ownCalendar.age) == age) {
         boo = true;
@@ -117,6 +119,7 @@ export class CalendaryComponent {
         }
       }
     }
+    console.log(boo)
     return boo;
 
   }
