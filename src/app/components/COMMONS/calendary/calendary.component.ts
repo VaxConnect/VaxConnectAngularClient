@@ -1,197 +1,193 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { type } from 'node:os';
-type Vacuna = {
-  id: number;
-  nombre: string;
-  edadess:Edad[];
-  
-  };
+import { VaccineOnCalendar, GetMomentToImplementVacuneDTO, CalendarResponse } from '../../../models/calendar-response.module';
 
-
-type PacienteDto = {
-  id: string;
-  fullname:string;
-  edades1:Edad[];
-  vacunas: Vacuna[];
-
-};
-
-type Edad={
-  id:number,
-  edad:string
+type Edad = {
+  id: number,
+  edad: string,
+  month: string;
 }
 const Edades: Edad[] = [
   {
-    id:1,
-    edad:'pre-natal'
+    id: 1,
+    edad: 'pre-natal',
+    month: '-1'
   },
   {
-    id:2,
-    edad:'0'
+    id: 2,
+    edad: '0',
+    month: '0'
   },
   {
-    id:3,
-    edad:'2'
+    id: 3,
+    edad: '2',
+    month: '2'
   },
   {
-    id:4,
-    edad:'4'
+    id: 4,
+    edad: '4',
+    month: '4'
   },
   {
-    id:5,
-    edad:'6'
+    id: 5,
+    edad: '6',
+    month: '6'
   },
   {
-    id:6,
-    edad:'11'
+    id: 6,
+    edad: '11',
+    month: '11'
   },
   {
-    id:7,
-    edad:'12'
+    id: 7,
+    edad: '12',
+    month: '12'
   },
   {
-    id:8,
-    edad:'15'
+    id: 8,
+    edad: '15',
+    month: '15'
   },
   {
-    id:9,
-    edad:'3-4'
+    id: 9,
+    edad: '3-4',
+    month: '36-48'
   },
   {
-    id:10,
-    edad:'5'
+    id: 10,
+    edad: '5',
+    month: '60'
   },
   {
-    id:11,
-    edad:'6'
+    id: 11,
+    edad: '6',
+    month: '72'
   },
   {
-    id:12,
-    edad:'12'
+    id: 12,
+    edad: '12',
+    month: '144'
   },
   {
-    id:13,
-    edad:'14'
+    id: 13,
+    edad: '14',
+    month: '168'
   },
   {
-    id:14,
-    edad:'15-18'
+    id: 14,
+    edad: '15-18',
+    month: '180-216'
   },
   {
-    id:15,
-    edad:'19-64'
+    id: 15,
+    edad: '19-64',
+    month: '228-768'
   },
   {
-    id:16,
-    edad:'65'
+    id: 16,
+    edad: '65',
+    month: '780'
   },
 ]
-const Pacientes: PacienteDto[] = [
-  {
-    id: '1',
- fullname:"rebolledo",
-    edades1:[
-      {
-        id:12,
-        edad:'15-18'
-      }
-    ],
-    vacunas: [
-      {
-        id: 1,
-        nombre: 'diabetes',
-
-        
-        edadess:[
-          {
-            id:11,
-            edad:'0'
-          },
-          {
-            id:16,
-            edad:"0"
-          }
-        ],
-        
-      },
-      {
-        id: 2,
-        nombre: 'escoliosis',
-        
-        edadess:[
-          {
-            id:3,
-            edad:'0'
-          },
-          {
-            id:4,
-            edad:"4"
-          },
-          {
-            id:8,
-            edad:"4"
-          }
-        ],
-        
-      },
-      {
-        id: 3,
-        nombre: ' lepra',
-        
-        edadess:[
-          {
-            id:6,
-            edad:'0'
-          }
-        ],
-       
-      },
-    ],
-    
-  },
-  
- 
-  
-];
+  ;
 @Component({
   selector: 'app-calendary',
   templateUrl: './calendary.component.html',
   styleUrl: './calendary.component.css'
 })
 export class CalendaryComponent {
+  @Input() calendar!: CalendarResponse;
   e = Edades;
-  p = Pacientes;
-  pa!: PacienteDto[];
 
-  esmayorId(paciente: PacienteDto) {
-    const edadVacuna = parseInt(paciente.vacunas[0].edadess[0].edad, 10);
-    const [min, max] = paciente.edades1[0].edad.split('-').map((e) => parseInt(e, 10));
+  isAdministred(vacuna: VaccineOnCalendar, edad: Edad) {
+    var boo: Boolean = false
+    vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
+      if (!edad.month.includes('-')) {
+        const age = parseInt(edad.month);
+        if (age === moment.monthToImplement && moment.isImplemented == true) {
+          boo = true;
+        }
+      } else {
+        const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+        if (min == null && max == 1) {
+          boo = false;
+        } else {
+          if (min <= moment.monthToImplement &&
+            max >= moment.monthToImplement &&
+            moment.isImplemented == true) {
+            boo = true;
+          }
+        }
+      }
+    });
+    return boo;
 
-    return !isNaN(edadVacuna) && !isNaN(min) && !isNaN(max) && edadVacuna >= min && edadVacuna <= max;
+  }
+  isNotAdministred(myCalendar: CalendarResponse, vacuna: VaccineOnCalendar, edad: Edad) {
+    var boo: Boolean = false
+    vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
+      const age = parseInt(edad.month);
+      if (!edad.month.includes('-')) {
+        if (age === moment.monthToImplement && moment.isImplemented == false && parseInt(myCalendar.age) <= age) {
+          boo = true;
+        }
+      } else {
+        const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+
+        if (min == null && max == 1) {
+          boo = false;
+        } else {
+
+          if (min <= moment.monthToImplement &&
+            max >= moment.monthToImplement &&
+            moment.isImplemented == false
+            && parseInt(myCalendar.age) <= age) {
+            console.log('minimo =' + min + 'maximo =' + max + ' moment =' + moment.monthToImplement);
+            boo = true;
+          }
+        }
+      }
+    });
+    return boo;
+  }
+  isPendingAdministred(myCalendar: CalendarResponse, vacuna: VaccineOnCalendar, edad: Edad) {
+    var boo: Boolean = false
+    vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
+      const age = parseInt(edad.month);
+      if (!edad.month.includes('-')) {
+        if (age === moment.monthToImplement && moment.isImplemented == false && parseInt(myCalendar.age) > age) {
+          boo = true;
+        }
+      } else {
+        const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+        if (min == null && max == 1) {
+          boo = false;
+        } else {
+          if (min <= moment.monthToImplement &&
+            max >= moment.monthToImplement &&
+            moment.isImplemented == false
+            && parseInt(myCalendar.age) > age) {
+            boo = true;
+          }
+        }
+      }
+    });
+    return boo;
   }
 
-  esEdadAdministrada(paciente: PacienteDto, vacuna: Vacuna, edad: Edad) {
-    const [min, max] = paciente.edades1[0].edad.split('-').map((e) => parseInt(e, 10));
-    return (
-      min >= edad.id &&
-      max >= edad.id &&
-      vacuna.edadess.some((e) => e.id === edad.id)
-    );
-  }
-  getIndexForEdad(edad: Edad): number {
-    return this.e.findIndex(e => e.id === edad.id);
-  }
+
+
 
   esEdadActual(edad: Edad): boolean {
-    return this.p[0].edades1[0].id === edad.id; 
+    return this.calendar.age == edad.month;
   }
 }
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
 
 

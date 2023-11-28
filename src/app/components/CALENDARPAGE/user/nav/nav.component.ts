@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../../../services/patient.service';
 import { patientBasicDataResponse } from '../../../../models/patient-data.interface';
+import { AdministrationService } from '../../../../services/administration.service';
+import { CalendarResponse } from '../../../../models/calendar-response.module';
 
 
 @Component({
@@ -9,22 +11,17 @@ import { patientBasicDataResponse } from '../../../../models/patient-data.interf
   styleUrl: './nav.component.css'
 })
 export class NavComponent implements OnInit {
-  patientList: patientBasicDataResponse[] = [];
-  userLogged!: patientBasicDataResponse;
-  active = 1;
 
-  constructor(private patientService: PatientService) { }
+  active = 1;
+  listCalendar: CalendarResponse[] = [];
+
+  constructor(private patientService: PatientService, private administrationService: AdministrationService) { }
 
   ngOnInit(): void {
-
-    this.patientService.GetUserLogged().subscribe(resp => {
-      this.userLogged = resp;
-      this.patientList.push(this.userLogged);
-
-      this.patientService.GetUserDependents().subscribe(resp => {
-        this.patientList = this.patientList.concat(resp);
-      });
-
+    this.administrationService.getCalendarOfMyFamily().subscribe(resp => {
+      for (let i = 0; i < resp.length; i++) {
+        this.listCalendar.push(resp[i]);
+      }
     });
   }
 }
