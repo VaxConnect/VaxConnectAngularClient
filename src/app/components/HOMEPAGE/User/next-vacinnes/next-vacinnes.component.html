@@ -8,13 +8,22 @@
           </tr>
         </thead>
         <tbody >
-          <tr *ngFor="let pacient of p">
-            <td *ngFor="let vacuna of pacient.vacunas">{{pacient.nombre}} {{pacient.apellido}}: {{vacuna.nombre}}</td>
-            
+          <tr *ngFor="let nextVaccine of list">
+            <td>
+              <div class="row">
+                <div class="col">
+                  <span>
+                    {{nextVaccine.completeName}}-{{nextVaccine.vaccineType}}
+                  </span>
+                </div>
+                <div class="col-2">
+                  <span>
+                    {{nextVaccine.month}} Month
+                  </span>
+                </div>
+              </div>
+            </td>
           </tr>
-          
-          
-         
         </tbody>
       </table>
 </div>

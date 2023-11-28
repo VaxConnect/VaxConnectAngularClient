@@ -42,7 +42,6 @@ import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune
     PageNotFoundComponent,
     CalendaryComponent,
     VaccinesPageComponent,
-    VaccinesPageComponent,
     VacuneItemComponent,
     VacuneListComponent,
     SanitaryHomePageComponent,
@@ -50,7 +49,7 @@ import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune
     PageMyprofileComponent,
     UserDataComponent,
     PatientsPageComponent,
-    DependientComponent,
+    DependientComponent
   ],
   imports: [
     BrowserModule,
