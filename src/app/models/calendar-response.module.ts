@@ -4,18 +4,18 @@ export interface CalendarResponse {
   id: string;
   fullname: string;
   age: string;
-  allVaccinesImplemented: AllVaccinesImplemented[];
-  vaccinesNotAdministrated: VaccinesNotAdministrated[];
+  allVaccine: VaccineOnCalendar[];
 }
 
-export interface AllVaccinesImplemented {
+export interface VaccineOnCalendar {
   id: string;
   nameVacune: string;
-  month: number;
+  getMomentToImplementVacuneDTOS: GetMomentToImplementVacuneDTO[];
 }
 
-export interface VaccinesNotAdministrated {
+export interface GetMomentToImplementVacuneDTO {
   id: string;
-  vacuneName: string;
-  age: number;
+  monthToImplement: number;
+  typeDosis: string;
+  isImplemented: boolean;
 }

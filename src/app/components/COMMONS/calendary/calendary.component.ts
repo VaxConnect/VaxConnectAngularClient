@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { type } from 'node:os';
-import { AllVaccinesImplemented, CalendarResponse } from '../../../models/calendar-response.module';
+import { VaccineOnCalendar, GetMomentToImplementVacuneDTO, CalendarResponse } from '../../../models/calendar-response.module';
 
 type Edad = {
   id: number,
@@ -99,25 +99,84 @@ export class CalendaryComponent {
   @Input() calendar!: CalendarResponse;
   e = Edades;
 
-  isAdministred(paciente: CalendarResponse, vacuna: AllVaccinesImplemented, edad: Edad) {
-    const [min, max] = edad.month.split('-').map((e) => parseInt(e, 10));
-    if (min >= parseInt(paciente.age) &&
-      max >= parseInt(paciente.age)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  isNotAdministred(patient: CalendarResponse, edad: Edad) {
-    var boo: Boolean = false;
-    patient.vaccinesNotAdministrated.forEach(vaccine => {
-      if (vaccine.age.toString() == edad.month) {
-        boo = true;
+  isAdministred(vacuna: VaccineOnCalendar, edad: Edad) {
+    var boo: Boolean = false
+    vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
+      if (!edad.month.includes('-')) {
+        const age = parseInt(edad.month);
+        if (age === moment.monthToImplement && moment.isImplemented == true) {
+          boo = true;
+        }
+      } else {
+        const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+        if (min == null && max == 1) {
+          boo = false;
+        } else {
+          if (min <= moment.monthToImplement &&
+            max >= moment.monthToImplement &&
+            moment.isImplemented == true) {
+            boo = true;
+          }
+        }
       }
-    })
+    });
+    return boo;
+
+  }
+  isNotAdministred(myCalendar: CalendarResponse, vacuna: VaccineOnCalendar, edad: Edad) {
+    var boo: Boolean = false
+    vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
+      const age = parseInt(edad.month);
+      if (!edad.month.includes('-')) {
+        if (age === moment.monthToImplement && moment.isImplemented == false && parseInt(myCalendar.age) <= age) {
+          boo = true;
+        }
+      } else {
+        const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+
+        if (min == null && max == 1) {
+          boo = false;
+        } else {
+
+          if (min <= moment.monthToImplement &&
+            max >= moment.monthToImplement &&
+            moment.isImplemented == false
+            && parseInt(myCalendar.age) <= age) {
+            console.log('minimo =' + min + 'maximo =' + max + ' moment =' + moment.monthToImplement);
+            boo = true;
+          }
+        }
+      }
+    });
     return boo;
   }
+  isPendingAdministred(myCalendar: CalendarResponse, vacuna: VaccineOnCalendar, edad: Edad) {
+    var boo: Boolean = false
+    vacuna.getMomentToImplementVacuneDTOS.forEach(moment => {
+      const age = parseInt(edad.month);
+      if (!edad.month.includes('-')) {
+        if (age === moment.monthToImplement && moment.isImplemented == false && parseInt(myCalendar.age) > age) {
+          boo = true;
+        }
+      } else {
+        const [min, max] = edad.month.split('-').map((e) => parseInt(e));
+        if (min == null && max == 1) {
+          boo = false;
+        } else {
+          if (min <= moment.monthToImplement &&
+            max >= moment.monthToImplement &&
+            moment.isImplemented == false
+            && parseInt(myCalendar.age) > age) {
+            boo = true;
+          }
+        }
+      }
+    });
+    return boo;
+  }
+
+
+
 
   esEdadActual(edad: Edad): boolean {
     return this.calendar.age == edad.month;
