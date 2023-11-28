@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment.development';
 import { GetAllPatientsResponse } from '../models/get-all-patients.interface';
 import { PatientDetailsResponse } from '../models/patient-details.interface';
 import { DependentsByPatientResponse } from '../models/dependents-by-patient.interface';
+import { MyProfileResponse } from '../models/my-profile.module';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,18 @@ import { DependentsByPatientResponse } from '../models/dependents-by-patient.int
 export class PatientService {
 
   constructor(private http: HttpClient) { }
+
+  GetMyProfilePage(): Observable<MyProfileResponse> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<MyProfileResponse>(`${environment.HeadUrl}/patient/myprofile/`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    )
+  }
 
   GetUserDependents(): Observable<patientBasicDataResponse[]> {
     let token = localStorage.getItem('TOKEN');
