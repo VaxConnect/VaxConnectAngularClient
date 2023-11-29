@@ -46,4 +46,14 @@ export class VacuneService {
         }
       })
   }
+
+  deleteVacune(id: string) {
+    return this.http.delete(`${environment.HeadUrl}/vacune/delete/${id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+        }
+      })
+  }
 }
