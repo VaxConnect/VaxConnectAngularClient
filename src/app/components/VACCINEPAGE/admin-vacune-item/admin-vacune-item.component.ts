@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Vacune } from '../../../models/vacune.module';
 
 @Component({
@@ -8,4 +8,14 @@ import { Vacune } from '../../../models/vacune.module';
 })
 export class AdminVacuneItemComponent {
   @Input() vacune: Vacune | undefined;
+  @Output() delete = new EventEmitter<Vacune>();
+  @Output() edit = new EventEmitter();
+
+  deleteModal() {
+    this.delete.emit(this.vacune);
+  }
+
+  editModal() {
+    this.edit.emit();
+  }
 }

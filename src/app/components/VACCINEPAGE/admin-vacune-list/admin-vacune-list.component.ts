@@ -1,4 +1,3 @@
-import { ImplicitReceiver } from '@angular/compiler';
 import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { Vacune } from '../../../models/vacune.module';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -28,29 +27,40 @@ export class AdminVacuneListComponent implements OnInit {
   })
 
   private modalService = inject(NgbModal);
-	closeResult = '';
+  closeResult = '';
 
-	open(content: TemplateRef<any>) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-			(result) => {
-				this.closeResult = `Closed with: ${result}`;
-			},
-			(reason) => {
-				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-			},
-		);
-	}
+  createModal(content: TemplateRef<any>) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
 
-	private getDismissReason(reason: any): string {
-		switch (reason) {
-			case ModalDismissReasons.ESC:
-				return 'by pressing ESC';
-			case ModalDismissReasons.BACKDROP_CLICK:
-				return 'by clicking on a backdrop';
-			default:
-				return `with: ${reason}`;
-      }
+  deleteModal(content: TemplateRef<any>, vacune: Vacune) {
+    this.modalService.open(content, { ariaLabelledBy: 'delete-modal' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    switch (reason) {
+      case ModalDismissReasons.ESC:
+        return 'by pressing ESC';
+      case ModalDismissReasons.BACKDROP_CLICK:
+        return 'by clicking on a backdrop';
+      default:
+        return `with: ${reason}`;
     }
+  }
 
   constructor(private vacuneService: VacuneService) { }
 
@@ -93,9 +103,18 @@ export class AdminVacuneListComponent implements OnInit {
 
   newVac() {
     this.vacuneService.newVacune(this.newVacune.value.name!, this.newVacune.value.description!).subscribe(v => {
-      this.loadData(false);
+      this.loadData(true);
     })
-    }
+  }
+
+  deleteVac(id: string) {
+    this.vacuneService.deleteVacune(id).subscribe(v => {
+      console.log("borrado");
+      this.loadData(true);
+    })
+    this.modalService.dismissAll();
+
+  }
 
   getItems() {
     this.vacuneService.getAllVacine(this.page).subscribe(v => {
@@ -112,4 +131,6 @@ export class AdminVacuneListComponent implements OnInit {
       this.page = v.pageable.pageNumber;
     })
   }
+
+
 }
