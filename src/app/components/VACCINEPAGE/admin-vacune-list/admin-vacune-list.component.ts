@@ -1,15 +1,18 @@
+import { ImplicitReceiver } from '@angular/compiler';
 import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { Vacune } from '../../../models/vacune.module';
+import { FormControl, FormGroup } from '@angular/forms';
 import { VacuneService } from '../../../services/vacune.service';
 import { PageEvent } from '@angular/material/paginator';
-import { FormControl, FormGroup } from '@angular/forms';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-vacune-list',
-  templateUrl: './vacune-list.component.html',
-  styleUrl: './vacune-list.component.css'
+  selector: 'app-admin-vacune-list',
+  templateUrl: './admin-vacune-list.component.html',
+  styleUrl: './admin-vacune-list.component.css'
 })
-export class VacuneListComponent implements OnInit {
+export class AdminVacuneListComponent implements OnInit {
+
   def = true;
   items: Vacune[] = [];
   pageLength: number | undefined;
@@ -18,6 +21,36 @@ export class VacuneListComponent implements OnInit {
   searchWord = new FormGroup({
     word: new FormControl('')
   })
+
+  newVacune = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl('')
+  })
+
+  private modalService = inject(NgbModal);
+	closeResult = '';
+
+	open(content: TemplateRef<any>) {
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+			(result) => {
+				this.closeResult = `Closed with: ${result}`;
+			},
+			(reason) => {
+				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+			},
+		);
+	}
+
+	private getDismissReason(reason: any): string {
+		switch (reason) {
+			case ModalDismissReasons.ESC:
+				return 'by pressing ESC';
+			case ModalDismissReasons.BACKDROP_CLICK:
+				return 'by clicking on a backdrop';
+			default:
+				return `with: ${reason}`;
+      }
+    }
 
   constructor(private vacuneService: VacuneService) { }
 
@@ -57,6 +90,12 @@ export class VacuneListComponent implements OnInit {
     }
     this.loadData(true)
   }
+
+  newVac() {
+    this.vacuneService.newVacune(this.newVacune.value.name!, this.newVacune.value.description!).subscribe(v => {
+      this.loadData(false);
+    })
+    }
 
   getItems() {
     this.vacuneService.getAllVacine(this.page).subscribe(v => {

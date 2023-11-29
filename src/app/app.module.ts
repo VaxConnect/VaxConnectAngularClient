@@ -27,6 +27,9 @@ import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependientComponent } from './components/USER/dependient/dependient.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
+import { AdminVacuneItemComponent } from './components/VACCINEPAGE/admin-vacune-item/admin-vacune-item.component';
+import { AdminVacuneListComponent } from './components/VACCINEPAGE/admin-vacune-list/admin-vacune-list.component';
+import { SanitaryVaccinePageComponent } from './ui/SANITARY/sanitary-vaccine-page/sanitary-vaccine-page.component';
 import { LastAddedPatientsComponent } from './components/HOMEPAGE/Sanitary/last-added-patients/last-added-patients.component';
 
 @NgModule({
@@ -51,6 +54,9 @@ import { LastAddedPatientsComponent } from './components/HOMEPAGE/Sanitary/last-
     UserDataComponent,
     PatientsPageComponent,
     DependientComponent,
+    AdminVacuneItemComponent,
+    AdminVacuneListComponent,
+    SanitaryVaccinePageComponent,
     LastAddedPatientsComponent
   ],
   imports: [

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VacuneResponse } from '../modules/vacune.module';
+import { VacuneResponse } from '../models/vacune.module';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
@@ -31,5 +31,19 @@ export class VacuneService {
           'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
         }
       });
+  }
+
+  newVacune(name: string, description: string) {
+    return this.http.post(`${environment.HeadUrl}/vacune/new`,
+      {
+        name: `${name}`,
+        description: `${description}`
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+        }
+      })
   }
 }
