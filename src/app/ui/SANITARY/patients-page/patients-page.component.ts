@@ -103,10 +103,16 @@ export class PatientsPageComponent implements OnInit {
       this.newPatient.value.phoneNumber!,
       this.newPatient.value.fotoUrl!,
       this.newPatient.value.password!,
-    ).subscribe();
-
-    this.closeModal();
-    location.reload();
+    ).subscribe(() => {
+      console.log("Paciente creado");
+      this.closeModal();
+      location.reload();
+    },
+      error => {
+        if (error.status === 400)
+          window.alert('Error: Cant create patients with the same email, or something go wrong');
+      }
+    );
   }
 
   closeModal() {
