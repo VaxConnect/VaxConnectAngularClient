@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../../models/get-all-patients.interface';
 import { PatientService } from '../../../services/patient.service';
-import { NgbModal, NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal, NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DependentsByPatientResponse } from '../../../models/dependents-by-patient.interface';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-patients-page',
@@ -15,13 +17,14 @@ export class PatientsPageComponent implements OnInit {
   count: number = 0;
   selectedPatient?: Patient;
   dependentsList: DependentsByPatientResponse[] = [];
+  birthDate: NgbDateStruct | null = null;
 
 
   constructor(
     private patientService: PatientService,
     config: NgbOffcanvasConfig,
     private offcanvasService: NgbOffcanvas,
-    modalService: NgbModal
+    private modalService: NgbModal
   ) {
     config.position = 'end';
     config.backdropClass = 'bg-dark';
@@ -68,7 +71,55 @@ export class PatientsPageComponent implements OnInit {
           window.alert('Error: Cant delete patients with dependents or those who are in charge of a patient.');
       }
     );
-
   }
 
+  createModal(createPatient: any) {
+    this.modalService.open(createPatient);
+  }
+
+  newPatient = new FormGroup({
+    name: new FormControl(''),
+    lastName: new FormControl(''),
+    birthDate: new FormControl(''),
+    dni: new FormControl(''),
+    email: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    fotoUrl: new FormControl(''),
+    password: new FormControl(''),
+  })
+
+  createPat() {
+    console.log("edad en guiri" + this.birthDate);
+    const formattedDate = this.birthDate
+      ? `${String(this.birthDate.day).padStart(2, '0')}-${String(this.birthDate.month).padStart(2, '0')}-${this.birthDate.year}`
+      : '';
+    console.log("españo" + formattedDate);
+    this.patientService.createPatient(
+      this.newPatient.value.name!,
+      this.newPatient.value.lastName!,
+      formattedDate,
+      this.newPatient.value.dni!,
+      this.newPatient.value.email!,
+      this.newPatient.value.phoneNumber!,
+      this.newPatient.value.fotoUrl!,
+      this.newPatient.value.password!,
+    ).subscribe(() => {
+      console.log("Paciente creado");
+      this.closeModal();
+      location.reload();
+    },
+      error => {
+        if (error.status === 400)
+          window.alert('Error: Cant create patients with the same email, or something go wrong');
+      }
+    );
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
+  }
+
+  updateBirthDate(newDate: NgbDateStruct | null): void {
+    this.birthDate = newDate;
+  }
 }
