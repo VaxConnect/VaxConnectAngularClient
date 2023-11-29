@@ -34,3 +34,9 @@ export interface Sort {
     sorted: boolean;
     unsorted: boolean;
 }
+
+export interface EditVacuneResponse {
+    id: string;
+    name: string;
+    description: string;
+}
