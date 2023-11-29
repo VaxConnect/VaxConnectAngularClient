@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, inject } from '@angular/core';
-import { Vacune } from '../../../modules/vacune.module';
+import { Vacune } from '../../../models/vacune.module';
 import { VacuneService } from '../../../services/vacune.service';
 import { PageEvent } from '@angular/material/paginator';
 import { FormControl, FormGroup } from '@angular/forms';

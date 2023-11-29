@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Vacune } from '../../../modules/vacune.module';
+import { Vacune } from '../../../models/vacune.module';
 
 @Component({
   selector: 'app-vacune-item',

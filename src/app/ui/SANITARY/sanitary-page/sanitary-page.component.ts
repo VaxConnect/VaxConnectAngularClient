@@ -10,7 +10,7 @@ import { SanitaryDetailsResponse } from '../../../models/sanitary-details';
   styleUrl: './sanitary-page.component.css'
 })
 export class SanitaryPageComponent implements OnInit {
-  sanitary!:ListSanitaryResponse;
+  sanitary!:ListSanitaryResponse[];
   selectedPatient?:SanitaryDetailsResponse;
   constructor(
     private patientService: PatientService,

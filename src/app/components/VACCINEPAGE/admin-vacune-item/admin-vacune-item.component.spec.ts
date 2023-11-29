@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VacuneListComponent } from './vacune-list.component';
+import { AdminVacuneItemComponent } from './admin-vacune-item.component';
 
-describe('VacuneListComponent', () => {
-  let component: VacuneListComponent;
-  let fixture: ComponentFixture<VacuneListComponent>;
+describe('AdminVacuneItemComponent', () => {
+  let component: AdminVacuneItemComponent;
+  let fixture: ComponentFixture<AdminVacuneItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VacuneListComponent]
+      declarations: [AdminVacuneItemComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(VacuneListComponent);
+    fixture = TestBed.createComponent(AdminVacuneItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
