@@ -172,5 +172,18 @@ export class PatientService {
     );
   }
 
+  DeleteSanitary(uuid: string): Observable<void> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.delete<void>(`${environment.HeadUrl}/sanitary/${uuid}`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  }
 
 }
+
+
+
