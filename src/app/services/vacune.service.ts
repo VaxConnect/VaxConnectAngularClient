@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VacuneResponse } from '../models/vacune.module';
+import { EditVacuneResponse, VacuneResponse } from '../models/vacune.module';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
@@ -38,6 +38,20 @@ export class VacuneService {
       {
         name: `${name}`,
         description: `${description}`
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+        }
+      })
+  }
+
+  editVacune(id: string, name: string, description: string): Observable<EditVacuneResponse> {
+    return this.http.put<EditVacuneResponse>(`${environment.HeadUrl}/vacune/edit/${id}`,
+      {
+        "name": `${name}`,
+        "description": `${description}`
       },
       {
         headers: {
