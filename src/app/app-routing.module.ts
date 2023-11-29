@@ -8,6 +8,7 @@ import { VaccinesPageComponent } from './ui/USER/vaccine-page/vaccines-page.comp
 import { SanitaryHomePageComponent } from './ui/SANITARY/sanitary-home-page/sanitary-home-page.component';
 import { PageMyprofileComponent } from './ui/USER/page-myprofile/page-myprofile.component';
 import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page.component';
+import { SanitaryPageComponent } from './ui/SANITARY/sanitary-page/sanitary-page.component';
 
 const routes: Routes = [
   { path: 'calendar-page', component: CalendarPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'home-page', component: HomePageComponent },
   { path: 'user-detail-home', component: PageMyprofileComponent },
   { path: 'sanitary-home-page', component: SanitaryHomePageComponent },
+  { path: 'sanitary-page', component: SanitaryPageComponent },
   { path: 'patients-page', component: PatientsPageComponent },
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: '**', component: PageNotFoundComponent }

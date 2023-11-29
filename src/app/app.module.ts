@@ -27,6 +27,7 @@ import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependientComponent } from './components/USER/dependient/dependient.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
+import { SanitaryPageComponent } from './ui/SANITARY/sanitary-page/sanitary-page.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune
     PageMyprofileComponent,
     UserDataComponent,
     PatientsPageComponent,
-    DependientComponent
+    DependientComponent,
+    SanitaryPageComponent
   ],
   imports: [
     BrowserModule,

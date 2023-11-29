@@ -7,6 +7,9 @@ import { GetAllPatientsResponse } from '../models/get-all-patients.interface';
 import { PatientDetailsResponse } from '../models/patient-details.interface';
 import { DependentsByPatientResponse } from '../models/dependents-by-patient.interface';
 import { MyProfileResponse } from '../models/my-profile.module';
+import { ListSanitaryResponse } from '../models/list-of-sanitary';
+import { SanitaryDetailsResponse } from '../models/sanitary-details';
+import { read } from 'fs';
 
 @Injectable({
   providedIn: 'root'
@@ -81,4 +84,26 @@ export class PatientService {
         }
       });
   }
+  GetListSanitary():Observable<ListSanitaryResponse>{
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<ListSanitaryResponse>(`${environment.HeadUrl}/sanitary/list`,
+    {
+      headers:{
+        accept: 'application/json',
+        'Authorization':`Bearer ${token}`
+      }
+    });
+  }
+
+  GetSanitary(email: string):Observable<SanitaryDetailsResponse>{
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<SanitaryDetailsResponse>(`${environment.HeadUrl}/sanitary/${email}`,
+    {
+      headers:{
+        accept: 'application/json',
+        'Authorization':`Bearer ${token}`
+      }
+    });
+  }
+
 }
