@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../../models/get-all-patients.interface';
 import { PatientService } from '../../../services/patient.service';
-import { NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbOffcanvas, NgbOffcanvasConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DependentsByPatientResponse } from '../../../models/dependents-by-patient.interface';
 
 @Component({
@@ -16,10 +16,12 @@ export class PatientsPageComponent implements OnInit {
   selectedPatient?: Patient;
   dependentsList: DependentsByPatientResponse[] = [];
 
+
   constructor(
     private patientService: PatientService,
     config: NgbOffcanvasConfig,
-    private offcanvasService: NgbOffcanvas
+    private offcanvasService: NgbOffcanvas,
+    modalService: NgbModal
   ) {
     config.position = 'end';
     config.backdropClass = 'bg-dark';
@@ -53,6 +55,12 @@ export class PatientsPageComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  deletePatient(id: string) {
+    this.patientService.deletePatientById(id).subscribe(
+      console.log("boorrado");
+    );
   }
 
 }
