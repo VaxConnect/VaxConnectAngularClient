@@ -11,6 +11,7 @@ import { ListSanitaryResponse } from '../models/list-of-sanitary';
 import { SanitaryDetailsResponse } from '../models/sanitary-details';
 import { read } from 'fs';
 import { PatientInfoOnTableMainResponse } from '../models/pantient-info-on-sanitary-main.module';
+import { EditPatientByIDResponse } from '../models/edit-patient-by-id.interface';
 
 
 @Injectable({
@@ -121,27 +122,56 @@ export class PatientService {
         }
       });
   }
-  GetListSanitary():Observable<ListSanitaryResponse[]>{
+  GetListSanitary(): Observable<ListSanitaryResponse[]> {
     let token = localStorage.getItem('TOKEN');
     return this.http.get<ListSanitaryResponse[]>(`${environment.HeadUrl}/sanitary/list`,
-    {
-      headers:{
-        accept: 'application/json',
-        'Authorization':`Bearer ${token}`
-      }
-    });
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
   }
 
-  GetSanitary(email: string):Observable<SanitaryDetailsResponse>{
+  GetSanitary(email: string): Observable<SanitaryDetailsResponse> {
     let token = localStorage.getItem('TOKEN');
     return this.http.get<SanitaryDetailsResponse>(`${environment.HeadUrl}/sanitary/${email}`,
-    {
-      headers:{
-        accept: 'application/json',
-        'Authorization':`Bearer ${token}`
-      }
-    });
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
   }
+
+  deletePatientById(id: string) {
+    return this.http.delete(`${environment.HeadUrl}/sanitary/patient/${id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+        }
+      });
+
+  }
+
+  editPatientById(id: string, name: string, lastName: string, phoneNumber: string, fotoUrl: string): Observable<EditPatientByIDResponse> {
+    return this.http.put<EditPatientByIDResponse>(`${environment.HeadUrl}/sanitary/patient/${id}`,
+      {
+        "name": `${name}`,
+        "lastName": `${lastName}`,
+        "phoneNumber": `${phoneNumber}`,
+        "fotoUrl": `${fotoUrl}`
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+        }
+      }
+    );
+  }
+
   DeleteSanitary(uuid: string): Observable<void> {
     let token = localStorage.getItem('TOKEN');
     return this.http.delete<void>(`${environment.HeadUrl}/sanitary/${uuid}`,
@@ -152,6 +182,7 @@ export class PatientService {
         }
       });
   }
+
 }
 
 
