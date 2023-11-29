@@ -7,6 +7,7 @@ import { GetAllPatientsResponse } from '../models/get-all-patients.interface';
 import { PatientDetailsResponse } from '../models/patient-details.interface';
 import { DependentsByPatientResponse } from '../models/dependents-by-patient.interface';
 import { MyProfileResponse } from '../models/my-profile.module';
+import { PatientInfoOnTableMainResponse } from '../models/pantient-info-on-sanitary-main.module';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,30 @@ import { MyProfileResponse } from '../models/my-profile.module';
 export class PatientService {
 
   constructor(private http: HttpClient) { }
+
+  GetYoungestPatients(): Observable<PatientInfoOnTableMainResponse[]> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<PatientInfoOnTableMainResponse[]>(`${environment.HeadUrl}/sanitary/patients/young/`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    )
+  }
+  GetLastAddedPatients(): Observable<PatientInfoOnTableMainResponse[]> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<PatientInfoOnTableMainResponse[]>(`${environment.HeadUrl}/sanitary/patients/last/`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    )
+  }
+
 
   GetMyProfilePage(): Observable<MyProfileResponse> {
     let token = localStorage.getItem('TOKEN');
