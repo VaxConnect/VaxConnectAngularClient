@@ -1,5 +1,23 @@
 # VaxConnectAngularClient
 
+Api -> https://github.com/VaxConnect/VaxConnectApi.git
+
+##Instalation
+
+If you don`t have installated node.js please go to this link and donwload it -> https://nodejs.org/en/download
+Then follow open the terminal (windows + r + (type cmd)) and paste this comands ->
+npm uninstall -g angular-cli
+npm uninstall --save-dev angular-cli
+npm uninstall -g @angular/cli
+npm cache verify
+npm install -g @angular/cli@latest
+git clone https://github.com/VaxConnect/VaxConnectAngularClient.git
+cd /VaxConnectAngularClient
+npm i
+ng serve -o
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.2.
 
 ## Development server
