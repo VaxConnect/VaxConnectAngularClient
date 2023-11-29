@@ -61,6 +61,7 @@ export class PatientsPageComponent implements OnInit {
     this.patientService.deletePatientById(id).subscribe(
       () => {
         console.log("Paciente borrado");
+        location.reload();
       },
       error => {
         if (error.status === 400)
