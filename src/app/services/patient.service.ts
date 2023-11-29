@@ -145,7 +145,7 @@ export class PatientService {
   }
 
   deletePatientById(id: string) {
-    return this.http.delete(`${environment.HeadUrl}//sanitary/patient/${id}`,
+    return this.http.delete(`${environment.HeadUrl}/sanitary/patient/${id}`,
       {
         headers: {
           'Content-Type': 'application/json',

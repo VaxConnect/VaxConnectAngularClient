@@ -59,8 +59,15 @@ export class PatientsPageComponent implements OnInit {
 
   deletePatient(id: string) {
     this.patientService.deletePatientById(id).subscribe(
-      console.log("boorrado");
+      () => {
+        console.log("Paciente borrado");
+      },
+      error => {
+        if (error.status === 400)
+          window.alert('Error: Cant delete patients with dependents or those who are in charge of a patient.');
+      }
     );
+
   }
 
 }
