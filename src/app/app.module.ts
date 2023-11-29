@@ -30,6 +30,7 @@ import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune
 import { AdminVacuneItemComponent } from './components/VACCINEPAGE/admin-vacune-item/admin-vacune-item.component';
 import { AdminVacuneListComponent } from './components/VACCINEPAGE/admin-vacune-list/admin-vacune-list.component';
 import { SanitaryVaccinePageComponent } from './ui/SANITARY/sanitary-vaccine-page/sanitary-vaccine-page.component';
+import { LastAddedPatientsComponent } from './components/HOMEPAGE/Sanitary/last-added-patients/last-added-patients.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SanitaryVaccinePageComponent } from './ui/SANITARY/sanitary-vaccine-pag
     DependientComponent,
     AdminVacuneItemComponent,
     AdminVacuneListComponent,
-    SanitaryVaccinePageComponent
+    SanitaryVaccinePageComponent,
+    LastAddedPatientsComponent
   ],
   imports: [
     BrowserModule,
