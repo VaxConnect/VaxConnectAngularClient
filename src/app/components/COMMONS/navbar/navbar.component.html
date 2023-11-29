@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row full-width justify-content-between">
             <img src="./assets/img/logo.png" class="" alt="logotipo web">
-            <div class="collapse navbar-collapse col-md-4" id="navbarText">
+            <div class="collapse navbar-collapse col-4" id="navbarText">
                 <ul class="navbar-nav mr-auto ">
                     <li class="nav-item">
                         <a [routerLink]="['/sanitary-home-page']" class="nav-link" routerLinkActive="active"
@@ -16,7 +16,7 @@
                         <a class="nav-link" [routerLink]="['/sanitary-vaccine-page']" routerLinkActive="active">Vaccine</a>
                     </li>
                     <li class="nav-item">
-
+                        <a href="#" (click)="logout()" style="float: right;">logout</a>
                     </li>
                 </ul>
             </div>
@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="row full-width justify-content-between">
             <img src="./assets/img/logo.png" class="" alt="logotipo web">
-            <div class="collapse navbar-collapse col-md-4" id="navbarText">
+            <div class="collapse navbar-collapse col-4" id="navbarText">
                 <ul class="navbar-nav mr-auto ">
                     <li class="nav-item">
                         <a [routerLink]="['/home-page']" class="nav-link" routerLinkActive="active"
@@ -41,10 +41,11 @@
                         <a class="nav-link" [routerLink]="['/user-vaccine']" routerLinkActive="active">Vaccine</a>
                     </li>
                     <li class="nav-item">
-
+                        <a href="#" (click)="logout()" style="float: right;">logout</a>
                     </li>
                 </ul>
             </div>
+            
         </div>
     </div>
 </nav>

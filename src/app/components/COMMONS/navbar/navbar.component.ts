@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-navbar',
@@ -14,5 +15,10 @@ export class NavbarComponent {
     } else {
       return false;
     }
+  }
+
+  logout() {
+    localStorage.clear();
+    window.location.href = `${environment.HeadUrl}/login`;
   }
 }
