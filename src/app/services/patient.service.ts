@@ -9,7 +9,6 @@ import { DependentsByPatientResponse } from '../models/dependents-by-patient.int
 import { MyProfileResponse } from '../models/my-profile.module';
 import { ListSanitaryResponse } from '../models/list-of-sanitary';
 import { SanitaryDetailsResponse } from '../models/sanitary-details';
-import { read } from 'fs';
 import { PatientInfoOnTableMainResponse } from '../models/pantient-info-on-sanitary-main.module';
 import { EditPatientByIDResponse } from '../models/edit-patient-by-id.interface';
 
@@ -172,6 +171,7 @@ export class PatientService {
     );
   }
 
+
   createPatient(name: string, lastName: string, birthDate: string, dni: string, email: string, phoneNumber: string, fotoUrl: string, password: string) {
     return this.http.post(`${environment.HeadUrl}/sanitary/patient`,
       {
@@ -192,5 +192,18 @@ export class PatientService {
         }
       });
   }
+  DeleteSanitary(uuid: string): Observable<void> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.delete<void>(`${environment.HeadUrl}/sanitary/${uuid}`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  }
 
 }
+
+
+

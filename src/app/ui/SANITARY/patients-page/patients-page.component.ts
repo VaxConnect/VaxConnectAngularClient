@@ -106,7 +106,7 @@ export class PatientsPageComponent implements OnInit {
     ).subscribe();
 
     this.closeModal();
-    //location.reload();
+    location.reload();
   }
 
   closeModal() {
