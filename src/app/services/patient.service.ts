@@ -172,5 +172,25 @@ export class PatientService {
     );
   }
 
+  createPatient(name: string, lastName: string, birthDate: string, dni: string, email: string, phoneNumber: string, fotoUrl: string, password: string) {
+    return this.http.post(`${environment.HeadUrl}/sanitary/patient`,
+      {
+        "name": `${name}`,
+        "lastName": `${lastName}`,
+        "birthDate": `${birthDate}`,
+        "dni": `${dni}`,
+        "email": `${email}`,
+        "phoneNumber": `${phoneNumber}`,
+        "fotoUrl": `${fotoUrl}`,
+        "password": `${password}`,
+        "dependents": []
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+        }
+      });
+  }
 
 }
