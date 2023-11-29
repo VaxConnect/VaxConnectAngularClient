@@ -16,6 +16,7 @@ export class AdminVacuneListComponent implements OnInit {
   items: Vacune[] = [];
   pageLength: number | undefined;
   page: number = 0;
+  actualVacune!: Vacune;
 
   searchWord = new FormGroup({
     word: new FormControl('')
@@ -26,10 +27,27 @@ export class AdminVacuneListComponent implements OnInit {
     description: new FormControl('')
   })
 
+  editVacune = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl('')
+  })
+
   private modalService = inject(NgbModal);
   closeResult = '';
 
   createModal(content: TemplateRef<any>) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
+
+  editModal(content: TemplateRef<any>, vacune: Vacune) {
+    this.actualVacune = vacune;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
       (result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -103,6 +121,12 @@ export class AdminVacuneListComponent implements OnInit {
 
   newVac() {
     this.vacuneService.newVacune(this.newVacune.value.name!, this.newVacune.value.description!).subscribe(v => {
+      this.loadData(true);
+    })
+  }
+
+  editVac(id: string) {
+    this.vacuneService.editVacune(id, this.editVacune.value.name!, this.editVacune.value.description!).subscribe(v => {
       this.loadData(true);
     })
   }
