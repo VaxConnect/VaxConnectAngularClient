@@ -27,10 +27,14 @@ import { PatientsPageComponent } from './ui/SANITARY/patients-page/patients-page
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependientComponent } from './components/USER/dependient/dependient.component';
 import { VacuneListComponent } from './components/VACCINEPAGE/vacune-list/vacune-list.component';
+
+import { SanitaryPageComponent } from './ui/SANITARY/sanitary-page/sanitary-page.component';
+
 import { AdminVacuneItemComponent } from './components/VACCINEPAGE/admin-vacune-item/admin-vacune-item.component';
 import { AdminVacuneListComponent } from './components/VACCINEPAGE/admin-vacune-list/admin-vacune-list.component';
 import { SanitaryVaccinePageComponent } from './ui/SANITARY/sanitary-vaccine-page/sanitary-vaccine-page.component';
 import { LastAddedPatientsComponent } from './components/HOMEPAGE/Sanitary/last-added-patients/last-added-patients.component';
+
 
 @NgModule({
   declarations: [
@@ -54,10 +58,12 @@ import { LastAddedPatientsComponent } from './components/HOMEPAGE/Sanitary/last-
     UserDataComponent,
     PatientsPageComponent,
     DependientComponent,
+    SanitaryPageComponent,
     AdminVacuneItemComponent,
     AdminVacuneListComponent,
     SanitaryVaccinePageComponent,
     LastAddedPatientsComponent
+
   ],
   imports: [
     BrowserModule,
