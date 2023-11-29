@@ -33,6 +33,14 @@ export class SanitaryPageComponent implements OnInit {
 
     });
   }
+  deleteSanitary(uuid: string) {
+    this.patientService.DeleteSanitary(uuid).subscribe(() => {
+      
+      this.patientService.GetListSanitary().subscribe(response => {
+        this.sanitary = response;
+      });
+    });
+  }
 
 
 }
