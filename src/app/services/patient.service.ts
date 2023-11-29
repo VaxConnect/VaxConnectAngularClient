@@ -51,6 +51,17 @@ export class PatientService {
       }
     )
   }
+  GetMyFamilyProfileResponse(): Observable<MyProfileResponse[]> {
+    let token = localStorage.getItem('TOKEN');
+    return this.http.get<MyProfileResponse[]>(`${environment.HeadUrl}/patient/myFamilyProfile/`,
+      {
+        headers: {
+          accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    )
+  }
 
   GetUserDependents(): Observable<patientBasicDataResponse[]> {
     let token = localStorage.getItem('TOKEN');

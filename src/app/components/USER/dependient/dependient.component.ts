@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Dependient } from '../../../models/dependient-dtoresponses.module';
+import { MyProfileResponse } from '../../../models/my-profile.module';
 
 
 @Component({
@@ -8,5 +9,5 @@ import { Dependient } from '../../../models/dependient-dtoresponses.module';
   styleUrl: './dependient.component.css'
 })
 export class DependientComponent {
-  @Input() dependient !: Dependient;
+  @Input() dependient !: MyProfileResponse;
 }
